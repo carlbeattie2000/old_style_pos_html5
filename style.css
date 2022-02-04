@@ -6,14 +6,18 @@
   font-size: 62.5%;
 }
 
+.hidden {
+  opacity: 0% !important;
+}
+
 body {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   margin: .5em;
 }
 
 body main .popup-close-cash-draw {
+  opacity: 100%;
   position: absolute;
-  display: none !important;
   top: 40%;
   left: 40%;
   background-color: #fe8081;
@@ -23,7 +27,9 @@ body main .popup-close-cash-draw {
   display: -ms-grid;
   display: grid;
   padding: 4em;
-  z-index: 4;
+  z-index: 5;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 
 body main .popup-close-cash-draw h3 {
