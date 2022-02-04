@@ -21,7 +21,7 @@ const TARE_BUTTON = document.getElementById("tare_button");
 const FIND_BUTTON = document.getElementById("find_button");
 const NO_SALE_BUTTON = document.getElementById("no_sale_button");
 const NO_TAX_BUTTON = document.getElementById("no_tax_button");
-const WEIGHT_BUTTON = document.getElementById("weight");
+const WEIGHT_BUTTON = document.getElementById("weight_button");
 const ACCT_BUTTON = document.getElementById("acct_button");
 const PRINT_BUTTON = document.getElementById("print_button");
 const SUSPEND_RESUME_BUTTON = document.getElementById("suspend_resume_button");
@@ -68,3 +68,5 @@ const $_5_BUTTON = document.getElementById("$_5_button");
 const $_10_BUTTON = document.getElementById("$_10_button");
 const $_20_BUTTON = document.getElementById("$_20_button");
 const CASH_BUTTON = document.getElementById("cash_button");
+
+const CLOSE_CASH_DRAW_BUTTON = document.getElementById("close_cash_draw_button");
