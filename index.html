@@ -54,21 +54,21 @@
         <button id="price_button" class="light-gray-background">Price</button>
         <button id="clear_button" class="light-gray-background">Clear</button>
         <button id="inquiry_button" class="light-gray-background">Inquiry</button>
-        <button id="int_7_button" class="light-blue-background">7</button>
-        <button id="int_8_button" class="light-blue-background">8</button>
-        <button id="int_9_button" class="light-blue-background">9</button>
+        <button  class="keypad_button light-blue-background" value="7">7</button>
+        <button  class="keypad_button light-blue-background" value="8">8</button>
+        <button  class="keypad_button light-blue-background" value="9">9</button>
         <button id="eligble_button" class="light-gray-background">Eligible</button>
-        <button id="int_4_button" class="light-blue-background">4</button>
-        <button id="int_5_button" class="light-blue-background">5</button>
-        <button id="int_6_button" class="light-blue-background">6</button>
+        <button  class="keypad_button light-blue-background" value="4">4</button>
+        <button  class="keypad_button light-blue-background" value="5">5</button>
+        <button  class="keypad_button light-blue-background" value="6">6</button>
         <button id="produce_codes_button" class="light-gray-background">Produce Codes</button>
-        <button id="int_1_button" class="light-blue-background">1</button>
-        <button id="int_2_button" class="light-blue-background">2</button>
-        <button id="int_3_button" class="light-blue-background">3</button>
+        <button  class="keypad_button light-blue-background" value="1">1</button>
+        <button  class="keypad_button light-blue-background" value="2">2</button>
+        <button  class="keypad_button light-blue-background" value="3">3</button>
         <button id="plu_button" class="light-gray-background">PLU</button>
-        <button id="int_0_button" class="light-blue-background">0</button>
-        <button id="int_00_button" class="light-blue-background">00</button>
-        <button id="decimal_button" class="light-blue-background">.</button>
+        <button  class="keypad_button light-blue-background" value="0">0</button>
+        <button  class="keypad_button light-blue-background" value="00">00</button>
+        <button  class="keypad_button light-blue-background" value=".">.</button>
         <button id="subtotal_button" class="light-gray-background">Subtotal</button>
       </div>
 
@@ -94,7 +94,8 @@
       </div>
 
       <div class="pos-sale-info">
-        <div class="item-table">
+        <!-- This "table" just won't cut it, needs a re-design & re-structure -->
+        <div class="item-table" id="items_basket">
           <div class="item item-header">
             <button>Barcode</button>
             <button>Description</button>
@@ -114,42 +115,17 @@
 
         <div class="total">
           <input type="text" placeholder="$0.00" disabled>
-          <input type="text" placeholder="barcode" disabled>
+          <input type="text" placeholder="barcode" id="keypad_input_display" disabled>
         </div>
       </div>
     </section>
   </main>
 
+  <script src="./js/global_functions.js"></script>
   <script src="./js/buttons_elements_names.js"></script>
-  <script>
-    let toggle = false;
-
-    const allChildrenButtons = Object.values(document.querySelector(".main_pos_body").getElementsByTagName("button"));
-
-    function toggleCloseDrawPopup() {
-      document.getElementById("close_cash_draw").classList.toggle("hidden");
-
-      toggle = !toggle
-
-      if (toggle) {
-        document.querySelector(".main_pos_body").style.filter = "Blur(4px)";
-
-        allChildrenButtons.forEach(button => button.disabled = true)
-
-        return
-      }
-
-      document.querySelector(".main_pos_body").style.filter = "none";
-      allChildrenButtons.forEach(button => button.disabled = false)
-    }
-
-    CASH_BUTTON.addEventListener("click", () => {
-      toggleCloseDrawPopup()
-    })
-
-    CLOSE_CASH_DRAW_BUTTON.addEventListener("click", () => {
-      toggleCloseDrawPopup();
-    })
-  </script>
+  <script src="./js/ui_elements.js"></script>
+  <script src="./js/pos_default.js"></script>
+  <script src="./js/button_functions.js"></script>
+  <script src="./js/button_event_handlers.js"></script>
 </body>
 </html>
