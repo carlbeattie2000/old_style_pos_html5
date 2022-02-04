@@ -1,0 +1,1 @@
+# Always had a weird interest in old style POS system, started learning CSS grid, and got distracted and started building this.
