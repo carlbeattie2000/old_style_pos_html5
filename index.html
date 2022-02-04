@@ -10,9 +10,9 @@
 <body>
 
   <main>
-    <div class="popup-close-cash-draw" id="close_cash_draw">
+    <div class="popup-close-cash-draw hidden" id="close_cash_draw">
       <h3>Close Cash Draw</h3>
-      <button>Close</button>
+      <button id="close_cash_draw_button">Close</button>
       <h2>Change Due: <span id="close_cash_draw_change_due">$0.00</span></h2>
     </div>
     <section class="main_pos_body">
@@ -121,5 +121,35 @@
   </main>
 
   <script src="./js/buttons_elements_names.js"></script>
+  <script>
+    let toggle = false;
+
+    const allChildrenButtons = Object.values(document.querySelector(".main_pos_body").getElementsByTagName("button"));
+
+    function toggleCloseDrawPopup() {
+      document.getElementById("close_cash_draw").classList.toggle("hidden");
+
+      toggle = !toggle
+
+      if (toggle) {
+        document.querySelector(".main_pos_body").style.filter = "Blur(4px)";
+
+        allChildrenButtons.forEach(button => button.disabled = true)
+
+        return
+      }
+
+      document.querySelector(".main_pos_body").style.filter = "none";
+      allChildrenButtons.forEach(button => button.disabled = false)
+    }
+
+    CASH_BUTTON.addEventListener("click", () => {
+      toggleCloseDrawPopup()
+    })
+
+    CLOSE_CASH_DRAW_BUTTON.addEventListener("click", () => {
+      toggleCloseDrawPopup();
+    })
+  </script>
 </body>
 </html>
