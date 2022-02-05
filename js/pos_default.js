@@ -41,34 +41,6 @@ const POS_ACCOUNTING = {
   }
 }
 
-const POS_NEXT_PRODUCT_ADDING = {
-  name: "",
-  barcode: "",
-  qty: 1,
-  tax: 0,
-  price: 0,
-  updateWithNewProduct: function({name, price, tax, barcode}) {
-    this.name = name;
-    this.barcode = barcode;
-    this.price = price;
-    this.tax = tax
-  },
-  setProductQty: function(qty) {
-    this.qty += qty;
-  },
-  retrieveProduct: function() {
-    return (
-      {
-        name: this.name,
-        barcode: this.barcode,
-        qty: this.qty,
-        tax: this.tax,
-        price: this.price
-      }
-    )
-  }
-}
-
 const POS_PRODUCTS_CURRENT_CUSTOMER = {
   products: [],
   totalPrice: 0,
@@ -99,9 +71,12 @@ const POS_SYSTEM_ACTIONS = {
 
     POS_SYSTEM_VARIABLES.ITEMS_LIST.forEach(product => {
 
-      if (product.barcode == barcode && !itemAlreadyInTable(barcode)) {
+      if (product.barcode == barcode && !itemAlreadyInTable(barcode, product.price)) {
         CUSTOMER_ITEMS_DISPLAY.innerHTML += addProductTableRow(product);
-        return
+
+        console.log(POS_PRODUCTS_CURRENT_CUSTOMER.products, POS_PRODUCTS_CURRENT_CUSTOMER.totalTax);
+        
+        return calcTotal();
       }
 
     })
