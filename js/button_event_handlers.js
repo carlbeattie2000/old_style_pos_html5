@@ -16,7 +16,7 @@ CLOSE_ITEM_LOOKUP.addEventListener("click", () => {
 
 CLEAR_BUTTON.addEventListener("click", () => {
   const newKeyPadValue = KEYPAD_INPUT_DISPLAY.value.slice(0, KEYPAD_INPUT_DISPLAY.value.length-1);
-  handleKeyPadClear(newKeyPadValue);
+  POS_BUTTON_ACTIONS.handleKeyPadClear(newKeyPadValue);
 })
 
 // hold down click functionally, clears whole input value
@@ -26,47 +26,55 @@ CLEAR_BUTTON.addEventListener("mousedown", () => {
 
 CLEAR_BUTTON.addEventListener("mouseup", () => {
   if (endClickMeasurement() > 700) {
-    handleKeyPadClearFull();
+    POS_BUTTON_ACTIONS.handleKeyPadClearFull();
   }
 })
 
 DISCOUNT_PERCENTAGE_BUTTON.addEventListener("click", () => {
-  handleKeyPadClearFull();
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+
   handleKeyPadInputTypeChange("%");
 })
 
 PRICE_BUTTON.addEventListener("click", () => {
-  handleKeyPadClearFull();
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+
   handleKeyPadInputTypeChange("$");
 })
 
 PLU_BUTTON.addEventListener("click", () => {
-  handleKeyPadClearFull();
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+
   handleKeyPadInputTypeChange("PLU");
 })
 
 BARCODE_BUTTON.addEventListener("click", () => {
-  handleKeyPadClearFull();
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+
   handleKeyPadInputTypeChange("barcode");
 })
 
 WEIGHT_BUTTON.addEventListener("click", () => {
-  handleKeyPadClearFull();
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+
   handleKeyPadInputTypeChange("g");
 })
 
 COUPON_BUTTON.addEventListener("click", () => {
-  handleKeyPadClearFull();
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+
   handleKeyPadInputTypeChange("coupon_code");
 })
 
 GIFT_CARD_BUTTON.addEventListener("click", () => {
-  handleKeyPadClearFull();
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+
   handleKeyPadInputTypeChange("gift_card_code");
 })
 
 CHECK_BUTTON.addEventListener("click", () => {
-  handleKeyPadClearFull();
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+  
   handleKeyPadInputTypeChange("check_number")
 })
 

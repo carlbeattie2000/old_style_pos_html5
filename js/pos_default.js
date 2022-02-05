@@ -118,5 +118,19 @@ const POS_BUTTON_ACTIONS = {
     MAIN_POS_BODY.style.filter = "Blur(4px)";
     POS_SYSTEM_VARIABLES.FIND_ITEMS_TOGGLE();
     FIND_ITEMS_POPUP.classList.remove("hidden");
+  },
+  handleKeyPadInput: function(value) {
+    KEYPAD_INPUT_DISPLAY.value += value;
+  },
+  handleKeyPadClear: function(value) {
+    KEYPAD_INPUT_DISPLAY.value = value;
+  },
+  handleKeyPadClearFull: function() {
+    KEYPAD_INPUT_DISPLAY.value = "";
+  },
+  handleKeyPadInputTypeChange: function(newType) {
+    POS_SYSTEM_VARIABLES.CHANGE_KEYPAD_INPUT_TYPE(newType);
+    
+    KEYPAD_INPUT_DISPLAY.placeholder = newType;
   }
 }
