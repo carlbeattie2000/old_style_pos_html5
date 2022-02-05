@@ -57,5 +57,7 @@ const $_10_BUTTON = document.getElementById("$_10_button");
 const $_20_BUTTON = document.getElementById("$_20_button");
 const CASH_BUTTON = document.getElementById("cash_button");
 
+const ALL_BUTTON_ON_SCREEN = Object.values(document.querySelector(".main_pos_body").getElementsByTagName("button"));
+
 const CLOSE_CASH_DRAW_BUTTON = document.getElementById("close_cash_draw_button");
 const CLOSE_ITEM_LOOKUP = document.getElementById("close_item_lookup");
