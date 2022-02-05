@@ -32,7 +32,7 @@ const DISCOUNT_PERCENTAGE_BUTTON = document.getElementById("discount_percentage_
 const FOR_BUTTON = document.getElementById("for_button");
 const PRICE_BUTTON = document.getElementById("price_button");
 const CLEAR_BUTTON = document.getElementById("clear_button");
-const INQUIRY_BUTTON = document.getElementById("inquiry_button");
+const BARCODE_BUTTON = document.getElementById("barcode_button");
 const ELIGIBLE_BUTTON = document.getElementById("eligible_button");
 const PRODUCE_CODES_BUTTON = document.getElementById("produce_codes_button");
 const PLU_BUTTON = document.getElementById("plu_button");
@@ -58,3 +58,4 @@ const $_20_BUTTON = document.getElementById("$_20_button");
 const CASH_BUTTON = document.getElementById("cash_button");
 
 const CLOSE_CASH_DRAW_BUTTON = document.getElementById("close_cash_draw_button");
+const CLOSE_ITEM_LOOKUP = document.getElementById("close_item_lookup");
