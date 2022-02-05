@@ -91,7 +91,7 @@
         <button  class="keypad_button light-blue-background" value="0">0</button>
         <button  class="keypad_button light-blue-background" value="00">00</button>
         <button  class="keypad_button light-blue-background" value=".">.</button>
-        <button id="eligble_button" class="light-gray-background">Enter</button>
+        <button id="enter_button" class="light-gray-background">Enter</button>
       </div>
 
       <div class="payment-buttons">
@@ -117,22 +117,14 @@
 
       <div class="pos-sale-info">
         <!-- This "table" just won't cut it, needs a re-design & re-structure -->
-        <div class="item-table" id="items_basket">
-          <table>
+        <div class="item-table">
+          <table id="items_basket">
             <tr>
               <th>Barcode</th>
               <th class="bigger-th">Description</th>
               <th>Qty</th>
               <th>Unit Price</th>
               <th>Net Sale</th>
-            </tr>
-
-            <tr>
-              <td>0454545</td>
-              <td>Egg Nog</td>
-              <td>2</td>
-              <td>@2.56</td>
-              <td>5.12</td>
             </tr>
           </table>
         </div>
@@ -149,8 +141,8 @@
   <script src="./js/global_functions.js"></script>
   <script src="./js/buttons_elements_names.js"></script>
   <script src="./js/ui_elements.js"></script>
+  <script src="./js/ui_functions.js"></script>
   <script src="./js/pos_default.js"></script>
-  <script src="./js/button_functions.js"></script>
   <script src="./js/button_event_handlers.js"></script>
 </body>
 </html>
