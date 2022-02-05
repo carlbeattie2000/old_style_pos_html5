@@ -1,4 +1,4 @@
-const POS_SYSTEM_DEFAULT = {
+const POS_SYSTEM_VARIABLES = {
   KEYPAD_INPUT_TYPE: "barcode",
   CHANGE_KEYPAD_INPUT_TYPE: function(type) {
     this.KEYPAD_INPUT_TYPE = type
