@@ -6,7 +6,8 @@
       "price": 1.50,
       "tax": 3,
       "weight": 200,
-      "imageURL": "./images/olives.jpg"
+      "imageURL": "./images/olives.jpg",
+      "barcode": "001"
     },
     {
       "name": "Baguette",
@@ -14,7 +15,8 @@
       "price": 0.80,
       "tax": 3,
       "weight": 50,
-      "imageURL": "./images/baguette.jpg"
+      "imageURL": "./images/baguette.jpg",
+      "barcode": "002"
     },
     {
       "name": "Steak",
@@ -22,7 +24,8 @@
       "price": 6.50,
       "tax": 10,
       "weight": 750,
-      "imageURL": "./images/steak.jpg"
+      "imageURL": "./images/steak.jpg",
+      "barcode": "003"
     }
   ]
 }
