@@ -7,8 +7,12 @@
 }
 
 .hidden {
-  display: none !important;
   opacity: 0% !important;
+  display: none !important;
+}
+
+img {
+  max-width: 100%;
 }
 
 body {
@@ -52,6 +56,63 @@ body main .popup-close-cash-draw button {
   color: #FFF;
   font-weight: bold;
   font-size: 3rem;
+}
+
+body main .popup-item-lookup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  font-size: 5rem;
+  background-color: #e9e9ed;
+  border: 2px solid #000;
+  height: 70vh;
+  width: 40vw;
+  z-index: 5;
+  padding: .2em;
+}
+
+body main .popup-item-lookup .item-lookup-main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 7fr 1fr;
+      grid-template-rows: 1fr 7fr 1fr;
+  height: 100%;
+}
+
+body main .popup-item-lookup .item-lookup-main input {
+  padding: 1em;
+  font-size: 2rem;
+}
+
+body main .popup-item-lookup .item-lookup-main .items {
+  margin: .5em 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -webkit-column-gap: 1em;
+          column-gap: 1em;
+  overflow-y: scroll;
+}
+
+body main .popup-item-lookup .item-lookup-main .items .lookup-item img {
+  border-radius: 0.3em;
+  height: 200px;
+  width: 100%;
+}
+
+body main .popup-item-lookup .item-lookup-main .items .lookup-item .item-details {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
+body main .popup-item-lookup .item-lookup-main .items .lookup-item .add-item button {
+  width: 100%;
+  background-color: #737373;
 }
 
 body main button {
