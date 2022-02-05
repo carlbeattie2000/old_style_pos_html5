@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "name": "Olives",
+      "category": "vegetable",
+      "price": 1.50,
+      "tax": 3,
+      "weight": 200,
+      "imageURL": "./images/olives.jpg"
+    },
+    {
+      "name": "Baguette",
+      "category": "bakery",
+      "price": 0.80,
+      "tax": 3,
+      "weight": 50,
+      "imageURL": "./images/baguette.jpg"
+    },
+    {
+      "name": "Steak",
+      "category": "meat",
+      "price": 6.50,
+      "tax": 10,
+      "weight": 750,
+      "imageURL": "./images/steak.jpg"
+    }
+  ]
+}
