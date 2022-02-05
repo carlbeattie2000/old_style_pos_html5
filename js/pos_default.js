@@ -20,6 +20,10 @@ const POS_SYSTEM_VARIABLES = {
   ITEMS_LIST: [],
   LOAD_ITEMS_LIST: function(list) {
     this.ITEMS_LIST = list;
+  },
+  CURRENT_FUNCTION_ACTIVE: "barcode",
+  SET_CURRENT_FUNCTION: function(type) {
+    this.CURRENT_FUNCTION_ACTIVE = type;
   }
 }
 
@@ -88,6 +92,25 @@ const POS_PRODUCTS_CURRENT_CUSTOMER = {
   }
 }
 
+const POS_SYSTEM_ACTIONS = {
+  addingProductToOrder: function() {
+
+    const barcode = KEYPAD_INPUT_DISPLAY.value;
+
+    POS_SYSTEM_VARIABLES.ITEMS_LIST.forEach(product => {
+
+      if (product.barcode == barcode && !itemAlreadyInTable(barcode)) {
+        CUSTOMER_ITEMS_DISPLAY.innerHTML += addProductTableRow(product);
+        return
+      }
+
+    })
+
+    return POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+
+  }
+}
+
 const POS_BUTTON_ACTIONS = {
   toggleCashDrawGUI: function() {
     if (POS_SYSTEM_VARIABLES.CASH_DRAW_STATUS) {
@@ -130,7 +153,17 @@ const POS_BUTTON_ACTIONS = {
   },
   handleKeyPadInputTypeChange: function(newType) {
     POS_SYSTEM_VARIABLES.CHANGE_KEYPAD_INPUT_TYPE(newType);
-    
+    POS_SYSTEM_VARIABLES.SET_CURRENT_FUNCTION(newType);
+
     KEYPAD_INPUT_DISPLAY.placeholder = newType;
+  },
+  runCurrentSystemFunction: function() {
+    switch(POS_SYSTEM_VARIABLES.CURRENT_FUNCTION_ACTIVE) {
+      case "barcode":
+        POS_SYSTEM_ACTIONS.addingProductToOrder();
+        break
+      default:
+        break
+    }
   }
 }

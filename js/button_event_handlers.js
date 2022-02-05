@@ -1,4 +1,5 @@
 CASH_BUTTON.addEventListener("click", () => {
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
   POS_BUTTON_ACTIONS.toggleCashDrawGUI();
 })
 
@@ -25,7 +26,7 @@ CLEAR_BUTTON.addEventListener("mousedown", () => {
 })
 
 CLEAR_BUTTON.addEventListener("mouseup", () => {
-  if (endClickMeasurement() > 700) {
+  if (endClickMeasurement() > 400) {
     POS_BUTTON_ACTIONS.handleKeyPadClearFull();
   }
 })
@@ -33,53 +34,56 @@ CLEAR_BUTTON.addEventListener("mouseup", () => {
 DISCOUNT_PERCENTAGE_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
-  handleKeyPadInputTypeChange("%");
+  POS_BUTTON_ACTIONS.handleKeyPadInputTypeChange("%");
 })
 
 PRICE_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
-  handleKeyPadInputTypeChange("$");
+  POS_BUTTON_ACTIONS.handleKeyPadInputTypeChange("$");
 })
 
 PLU_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
-  handleKeyPadInputTypeChange("PLU");
+  POS_BUTTON_ACTIONS.handleKeyPadInputTypeChange("PLU");
 })
 
 BARCODE_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
-  handleKeyPadInputTypeChange("barcode");
+  POS_BUTTON_ACTIONS.handleKeyPadInputTypeChange("barcode");
 })
 
 WEIGHT_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
-  handleKeyPadInputTypeChange("g");
+  POS_BUTTON_ACTIONS.handleKeyPadInputTypeChange("g");
 })
 
 COUPON_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
-  handleKeyPadInputTypeChange("coupon_code");
+  POS_BUTTON_ACTIONS.handleKeyPadInputTypeChange("coupon_code");
 })
 
 GIFT_CARD_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
-  handleKeyPadInputTypeChange("gift_card_code");
+  POS_BUTTON_ACTIONS.handleKeyPadInputTypeChange("gift_card_code");
 })
 
 CHECK_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
-  
-  handleKeyPadInputTypeChange("check_number")
+
+  POS_BUTTON_ACTIONS.handleKeyPadInputTypeChange("check_number")
 })
 
+ENTER_BUTTON.addEventListener("click", () => {
+  POS_BUTTON_ACTIONS.runCurrentSystemFunction();
+})
 
 // KEYPAD BUTTON
 const KEYPAD_BUTTONS = document.querySelectorAll(".keypad_button");
 
-KEYPAD_BUTTONS.forEach(button => button.addEventListener("click", (e) => handleKeyPadInput(e.target.value)));
+KEYPAD_BUTTONS.forEach(button => button.addEventListener("click", (e) => POS_BUTTON_ACTIONS.handleKeyPadInput(e.target.value)));
