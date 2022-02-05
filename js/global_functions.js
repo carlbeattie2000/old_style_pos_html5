@@ -25,6 +25,7 @@ document.body.onload = () => {
               <p>${product.weight}g</p>
               <p>${product.tax}%</p>
               <p>${product.category}</p>
+              <p>${product.barcode}</p>
             </div>
             <div class="add-item">
               <button>Add</button>
