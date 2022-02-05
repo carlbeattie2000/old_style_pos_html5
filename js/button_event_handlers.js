@@ -1,17 +1,17 @@
 CASH_BUTTON.addEventListener("click", () => {
-  toggleCloseCashDrawPopup();
+  POS_BUTTON_ACTIONS.toggleCashDrawGUI();
 })
 
 CLOSE_CASH_DRAW_BUTTON.addEventListener("click", () => {
-  toggleCloseCashDrawPopup();
+  POS_BUTTON_ACTIONS.toggleCashDrawGUI();
 })
 
 FIND_BUTTON.addEventListener("click", () => {
-  toggleFindItemsPopup();
+  POS_BUTTON_ACTIONS.toggleFindItemsGUI();
 })
 
 CLOSE_ITEM_LOOKUP.addEventListener("click", () => {
-  toggleFindItemsPopup();
+  POS_BUTTON_ACTIONS.toggleFindItemsGUI();
 })
 
 CLEAR_BUTTON.addEventListener("click", () => {
