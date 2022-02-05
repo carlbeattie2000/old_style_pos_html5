@@ -11,12 +11,12 @@ function endClickMeasurement() {
 document.body.onload = () => {
   getProducts()
     .then(returnedProducts =>{
-    POS_SYSTEM_DEFAULT.LOAD_ITEMS_LIST(returnedProducts["products"]);
+    POS_SYSTEM_VARIABLES.LOAD_ITEMS_LIST(returnedProducts["products"]);
     })
     .finally(() => {
       let elementsToAdd = '';
 
-      POS_SYSTEM_DEFAULT.ITEMS_LIST.forEach(product => {
+      POS_SYSTEM_VARIABLES.ITEMS_LIST.forEach(product => {
         elementsToAdd += `
           <div class="lookup-item">
             <img src="${product.imageURL}">
