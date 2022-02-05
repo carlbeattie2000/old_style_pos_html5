@@ -41,7 +41,7 @@ const POS_NEXT_PRODUCT_ADDING = {
   name: "",
   barcode: "",
   qty: 1,
-  tax,
+  tax: 0,
   price: 0,
   updateWithNewProduct: function({name, price, tax, barcode}) {
     this.name = name;
@@ -85,5 +85,38 @@ const POS_PRODUCTS_CURRENT_CUSTOMER = {
   },
   addDiscount: function(amount) {
     return this.discounts += amount;
+  }
+}
+
+const POS_BUTTON_ACTIONS = {
+  toggleCashDrawGUI: function() {
+    if (POS_SYSTEM_VARIABLES.CASH_DRAW_STATUS) {
+      POS_SYSTEM_VARIABLES.CLOSE_CASH_DRAW();
+
+      ALL_BUTTON_ON_SCREEN.forEach(button => button.disabled  = false);
+      MAIN_POS_BODY.style.filter = "none";
+
+      return CLOSE_CASH_DRAW_POPUP.classList.add("hidden");
+    }
+
+    ALL_BUTTON_ON_SCREEN.forEach(button => button.disabled = true);
+    MAIN_POS_BODY.style.filter = "Blur(4px)";
+    POS_SYSTEM_VARIABLES.OPEN_CASH_DRAW();
+    CLOSE_CASH_DRAW_POPUP.classList.remove("hidden");
+  },
+  toggleFindItemsGUI: function() {
+    if(POS_SYSTEM_VARIABLES.FIND_ITEMS_STATUS) {
+      POS_SYSTEM_VARIABLES.FIND_ITEMS_TOGGLE();
+
+      ALL_BUTTON_ON_SCREEN.forEach(button => button.disabled = false);
+      MAIN_POS_BODY.style.filter = "none";
+
+      return FIND_ITEMS_POPUP.classList.add("hidden");
+    }
+
+    ALL_BUTTON_ON_SCREEN.forEach(button => button.disabled = true);
+    MAIN_POS_BODY.style.filter = "Blur(4px)";
+    POS_SYSTEM_VARIABLES.FIND_ITEMS_TOGGLE();
+    FIND_ITEMS_POPUP.classList.remove("hidden");
   }
 }
