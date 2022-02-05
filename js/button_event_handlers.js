@@ -31,6 +31,10 @@ CLEAR_BUTTON.addEventListener("mouseup", () => {
   }
 })
 
+VOID_BUTTON.addEventListener("click", () => {
+  POS_BUTTON_ACTIONS.VOID();
+})
+
 DISCOUNT_PERCENTAGE_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 

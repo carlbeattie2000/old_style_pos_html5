@@ -55,3 +55,13 @@ function calcTotal() {
   return CUSTOMER_ITEMS_DISPLAY_TOTAL.value = "$" + total
   
 }
+
+function itemDisplayRemoveItems() {
+  Object.values(CUSTOMER_ITEMS_DISPLAY.children).forEach(row => {
+    row.childNodes.forEach(row_item => {
+      if (row_item.id) {
+        row_item.remove();
+      }
+    })
+  })
+}

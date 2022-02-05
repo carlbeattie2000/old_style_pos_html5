@@ -1,6 +1,5 @@
 // This whole page is a complete mess, and i'm not sure how nearly all of it, is going to actually connect to anything else vise versa.
 
-
 const POS_SYSTEM_VARIABLES = {
   KEYPAD_INPUT_TYPE: "barcode",
   CHANGE_KEYPAD_INPUT_TYPE: function(type) {
@@ -75,7 +74,7 @@ const POS_SYSTEM_ACTIONS = {
         CUSTOMER_ITEMS_DISPLAY.innerHTML += addProductTableRow(product);
 
         console.log(POS_PRODUCTS_CURRENT_CUSTOMER.products, POS_PRODUCTS_CURRENT_CUSTOMER.totalTax);
-        
+
         return calcTotal();
       }
 
@@ -83,7 +82,7 @@ const POS_SYSTEM_ACTIONS = {
 
     return POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
-  }
+  },
 }
 
 const POS_BUTTON_ACTIONS = {
@@ -140,5 +139,11 @@ const POS_BUTTON_ACTIONS = {
       default:
         break
     }
+  },
+  VOID: function() {
+    itemDisplayRemoveItems();
+    KEYPAD_INPUT_DISPLAY.value = "";
+    CUSTOMER_ITEMS_DISPLAY_TOTAL.value = "";
+    this.handleKeyPadInputTypeChange("barcode");
   }
 }
