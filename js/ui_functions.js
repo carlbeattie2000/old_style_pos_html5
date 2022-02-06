@@ -4,13 +4,24 @@ const UI_FUNCTIONS = {
   allPOSButtons: document.querySelectorAll('.btn-pos'),
   mainPOSBody: document.querySelector('.main_pos_body'),
   keypadInputDisplay: document.getElementById('keypad_input_display'),
+  warningPopupBox: document.getElementById('warning-message-popup'),
 
   openWarningPopupWindow(message) {
-    console.error(new Error(message)); // will show popup window with error message
+    const warningPopupMessageElementSelection = document.getElementById('warning-popup-message');
+
+    warningPopupMessageElementSelection.textContent = message;
+
+    this.toggleDisableAllMainButtons();
+
+    this.warningPopupBox.classList.remove('hidden');
   },
 
   closeWarningPopupWindow() {
-    // code to close warning popup window
+    this.toggleDisableAllMainButtons();
+
+    this.mainPOSBodySetFilter('none');
+
+    this.warningPopupBox.classList.add('hidden');
   },
 
   openFindItemPopup() {
