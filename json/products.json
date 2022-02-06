@@ -3,8 +3,8 @@
     {
       "name": "Olives",
       "category": "vegetable",
-      "price": 1.50,
-      "tax": 3,
+      "price": 150,
+      "tax": 20,
       "weight": 200,
       "imageURL": "./images/olives.jpg",
       "barcode": "001"
@@ -12,8 +12,8 @@
     {
       "name": "Baguette",
       "category": "bakery",
-      "price": 0.80,
-      "tax": 3,
+      "price": 80,
+      "tax": 20,
       "weight": 50,
       "imageURL": "./images/baguette.jpg",
       "barcode": "002"
@@ -21,11 +21,65 @@
     {
       "name": "Steak",
       "category": "meat",
-      "price": 6.50,
-      "tax": 10,
+      "price": 650,
+      "tax": 120,
       "weight": 750,
       "imageURL": "./images/steak.jpg",
       "barcode": "003"
+    },
+    {
+      "name": "Coffee",
+      "category": "drinks",
+      "price": 200,
+      "tax": 20,
+      "weight": 150,
+      "imageURL": "./images/coffee.jpg",
+      "barcode": "004"
+    },
+    {
+      "name": "Shortbread",
+      "category": "bakery",
+      "price": 400,
+      "tax": 20,
+      "weight": 150,
+      "imageURL": "./images/shortbread.jpg",
+      "barcode": "005"
+    },
+    {
+      "name": "Tea",
+      "category": "drinks",
+      "price": 140,
+      "tax": 20,
+      "weight": 150,
+      "imageURL": "./images/tea.jpeg",
+      "barcode": "006"
+    },
+    {
+      "name": "Bacon",
+      "category": "meat",
+      "price": 260,
+      "tax": 20,
+      "weight": 150,
+      "imageURL": "./images/bacon.jpg",
+      "barcode": "007"
+    },
+    {
+      "name": "Dozen Eggs",
+      "category": "meat",
+      "price": 360,
+      "tax": 20,
+      "weight": 250,
+      "imageURL": "./images/10pack_eggs.jpg",
+      "barcode": "008"
+    },
+    {
+      "name": "Fried Eggs",
+      "category": "meat",
+      "price": 130,
+      "tax": 20,
+      "weight": 50,
+      "imageURL": "./images/fried_egg.jpg",
+      "barcode": "009"
     }
   ]
 }
