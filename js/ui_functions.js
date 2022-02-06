@@ -3,6 +3,7 @@ const UI_FUNCTIONS = {
   findItemsPopup: document.getElementById('find_items_popup'),
   allPOSButtons: document.querySelectorAll('.btn-pos'),
   mainPOSBody: document.querySelector('.main_pos_body'),
+  keypadInputDisplay: document.getElementById('keypad_input_display'),
 
   openWarningPopupWindow(message) {
     console.error(new Error(message)); // will show popup window with error message
@@ -37,15 +38,19 @@ const UI_FUNCTIONS = {
   },
 
   clearInputValueByOneCharacter() {
+    const keypadInputValueLength = this.keypadInputDisplay.value.length;
 
+    const newKeyPadInputValue = this.keypadInputDisplay.value.slice(0, keypadInputValueLength - 1);
+
+    this.keypadInputDisplay.value = newKeyPadInputValue;
   },
 
   clearInputValueFullPurge() {
-
+    this.keypadInputDisplay.value = '';
   },
 
   addCharacterToInputValue(input) {
-
+    this.keypadInputDisplay.value += input;
   },
 
   updateInputPlaceholderWithSelectedFunction(selectedFuntion) {
