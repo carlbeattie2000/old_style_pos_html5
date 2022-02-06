@@ -17,7 +17,19 @@ const UI_FUNCTIONS = {
   },
   closeCashDrawOpenPopup() {
     // run code to close cash draw open popup
-  }
+  },
+  clearInputValueByOneCharacter() {
+
+  },
+  clearInputValueFullPurge() {
+
+  },
+  addCharacterToInputValue(input) {
+
+  },
+  updateInputPlaceholderWithSelectedFunction(selectedFuntion) {
+
+  },
 };
 
 export default UI_FUNCTIONS;
