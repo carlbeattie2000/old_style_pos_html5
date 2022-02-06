@@ -20,11 +20,47 @@ body {
   margin: .5em;
 }
 
+body main .warning-message-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  z-index: 5;
+  background-color: #e91313;
+  color: #FFF;
+  width: 40vw;
+  height: 40vh;
+  text-align: center;
+}
+
+body main .warning-message-popup h3, body main .warning-message-popup h4, body main .warning-message-popup button {
+  margin: 1em;
+}
+
+body main .warning-message-popup h3 {
+  font-size: 4rem;
+}
+
+body main .warning-message-popup h4 {
+  font-size: 3rem;
+}
+
+body main .warning-message-popup button {
+  width: 60%;
+  height: 20%;
+  background-color: #fda500;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
 body main .popup-close-cash-draw {
   opacity: 100%;
   position: absolute;
-  top: 40%;
-  left: 40%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
   background-color: #fe8081;
   width: 25vw;
   text-align: center;
