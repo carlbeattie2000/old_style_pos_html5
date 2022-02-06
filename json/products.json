@@ -80,6 +80,60 @@
       "weight": 50,
       "imageURL": "./images/fried_egg.jpg",
       "barcode": "009"
+    },
+    {
+      "name": "Sausage",
+      "category": "meat",
+      "price": 295,
+      "tax": 20,
+      "weight": 100,
+      "imageURL": "./images/sausage.png",
+      "barcode": "010"
+    },
+    {
+      "name": "Fried Chips",
+      "category": "vegetable",
+      "price": 195,
+      "tax": 20,
+      "weight": 100,
+      "imageURL": "./images/chips.png",
+      "barcode": "011"
+    },
+    {
+      "name": "Baby Potato",
+      "category": "vegetable",
+      "price": 200,
+      "tax": 20,
+      "weight": 100,
+      "imageURL": "./images/baby_potato.jpeg",
+      "barcode": "012"
+    },
+    {
+      "name": "Ferrero Chocolate Bar",
+      "category": "chocolate",
+      "price": 150,
+      "tax": 20,
+      "weight": 100,
+      "imageURL": "./images/ferrero_bar.png",
+      "barcode": "013"
+    },
+    {
+      "name": "Ferrero Large",
+      "category": "chocolate",
+      "price": 450,
+      "tax": 20,
+      "weight": 100,
+      "imageURL": "./images/ferrero_big.jpg",
+      "barcode": "014"
+    },
+    {
+      "name": "Ferrero Bars Range",
+      "category": "chocolate",
+      "price": 300,
+      "tax": 20,
+      "weight": 150,
+      "imageURL": "./images/ferrero_bars_range.jpg",
+      "barcode": "015"
     }
   ]
 }
