@@ -13,6 +13,8 @@ const UI_FUNCTIONS = {
 
     this.toggleDisableAllMainButtons();
 
+    this.mainPOSBodySetFilter('Blur(4px)');
+
     this.warningPopupBox.classList.remove('hidden');
   },
 

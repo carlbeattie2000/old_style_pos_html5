@@ -1,3 +1,5 @@
+import UI_FUNCTIONS from "./ui_functions.js";
+
 const CURRENT_SALE = {
   productsScanned: [],
   totalSalePrice: 0,
@@ -30,8 +32,9 @@ const CURRENT_SALE = {
     this.productsScanned.push(productToAdd);
   },
   addDiscount(percentageAmount) {
-    if (this.scanProduct.length === 0) {
-      // error popup function
+    if (this.productsScanned.length === 0) {
+      UI_FUNCTIONS.openWarningPopupWindow('Error: cannot apply discount with no added items in sale cart');
+
       return false;
     }
 
