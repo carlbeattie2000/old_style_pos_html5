@@ -75,6 +75,10 @@ const POS_PRODUCTS_CURRENT_CUSTOMER = {
     return this.discounts += amount;
   },
   subTotal: function() {
+    if (this.subTotalCalled || this.totalPrice === 0) {
+      return true
+    }
+
     this.totalPrice += this.totalTax;
     this.totalPrice -= this.totalPrice * (this.discounts / 100);
     this.subTotalCalled = true;
@@ -221,5 +225,6 @@ const POS_BUTTON_ACTIONS = {
     CUSTOMER_ITEMS_DISPLAY_TOTAL.value = "";
     this.handleKeyPadInputTypeChange("barcode");
     POS_PRODUCTS_CURRENT_CUSTOMER.reset();
+    
   }
 }

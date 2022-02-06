@@ -110,17 +110,17 @@ KEYPAD_BUTTONS.forEach(button => button.addEventListener("click", (e) => POS_BUT
 $_5_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
-  POS_BUTTON_ACTIONS.handleKeyPadInput(5);
+  POS_BUTTON_ACTIONS.handleKeyPadInput(500);
 })
 
 $_10_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
-  POS_BUTTON_ACTIONS.handleKeyPadInput(10);
+  POS_BUTTON_ACTIONS.handleKeyPadInput(1000);
 })
 
 $_20_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
-  POS_BUTTON_ACTIONS.handleKeyPadInput(20);
+  POS_BUTTON_ACTIONS.handleKeyPadInput(2000);
 })
