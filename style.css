@@ -252,4 +252,127 @@ body main .main_pos_body .pos-sale-info .total input {
   padding: .5em;
   margin: .2em 0;
 }
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  body main .popup-item-lookup {
+    height: 90vh;
+    width: 70vw;
+  }
+  body main .popup-item-lookup .item-lookup-main .items {
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
+  body main .popup-item-lookup .item-lookup-main .items .lookup-item {
+    margin: 1em 0;
+  }
+  body main .popup-item-lookup .item-lookup-main .items .lookup-item img {
+    border-radius: 4em;
+  }
+  body main button {
+    border-width: 3px;
+    font-size: 1.3rem;
+  }
+  body main p, body main input {
+    font-size: 1.5rem;
+  }
+  body main .main_pos_body {
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    min-height: 50vh;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 2fr 1fr 2fr;
+        grid-template-columns: 1fr 2fr 1fr 2fr;
+    -webkit-column-gap: 1em;
+            column-gap: 1em;
+  }
+  body main .main_pos_body .helper-buttons {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  body main .main_pos_body .helper-buttons button {
+    background-color: #737373;
+    color: #FFF;
+  }
+  body main .main_pos_body .helper-buttons .deli-menu-button {
+    grid-column: unset;
+    grid-row: unset;
+  }
+  body main .main_pos_body .helper-buttons .modify-food-button {
+    grid-column: unset;
+  }
+  body main .main_pos_body .main-buttons {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+  }
+  body main .main_pos_body .main-buttons button {
+    background-color: #ebe549;
+  }
+  body main .main_pos_body .main-buttons .red-background {
+    background-color: #b50c11;
+    color: #FFF;
+  }
+  body main .main_pos_body .main-buttons .light-gray-background {
+    background-color: #e6e6e6;
+  }
+  body main .main_pos_body .main-buttons .light-blue-background {
+    background-color: #118ab9;
+    color: #FFF;
+  }
+  body main .main_pos_body .payment-buttons {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  body main .main_pos_body .payment-buttons button {
+    background-color: #197e31;
+    color: #FFF;
+  }
+  body main .main_pos_body .pos-sale-info {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1.9fr 1fr;
+        grid-template-rows: 1.9fr 1fr;
+  }
+  body main .main_pos_body .pos-sale-info .item-table table {
+    overflow-y: scroll;
+  }
+  body main .main_pos_body .pos-sale-info .item-table table tr {
+    background-color: #fefefe;
+  }
+  body main .main_pos_body .pos-sale-info .item-table table tr th {
+    font-size: 2rem;
+    padding: 0 .5em;
+    border: 2px solid #9e9892;
+    background-color: #d4cfc7;
+    font-weight: 300;
+  }
+  body main .main_pos_body .pos-sale-info .item-table table tr .bigger-th {
+    width: 13vw;
+  }
+  body main .main_pos_body .pos-sale-info .item-table table tr td {
+    font-size: 2rem;
+    padding: 0.2em 0.5em;
+    border: 2px solid #a9a9a9;
+    font-size: 1.6rem;
+    overflow-y: scroll;
+  }
+  body main .main_pos_body .pos-sale-info .item-table table tr:nth-child(even) {
+    background: #e5f6fc;
+  }
+  body main .main_pos_body .pos-sale-info .total {
+    display: -ms-grid;
+    display: grid;
+  }
+  body main .main_pos_body .pos-sale-info .total input {
+    font-size: 4rem;
+    padding: .5em;
+    margin: .2em 0;
+  }
+}
 /*# sourceMappingURL=style.css.map */
