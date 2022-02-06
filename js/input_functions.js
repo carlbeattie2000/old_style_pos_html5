@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import MAIN_POS from './main_pos.js';
 import CURRENT_SALE from './current_sale.js';
 import UI_FUNCTIONS from './ui_functions.js';
@@ -32,28 +33,28 @@ function discountEntered() {
     return;
   }
 
-  UI_FUNCTIONS.warningPopupWindow('no items to add discount too');
+  UI_FUNCTIONS.toggleWarningPopupWindow('no items to add discount too');
 }
 
 function noTaxEntered() {
   if (CURRENT_SALE.removeTaxOnSale()) {
-    UI_FUNCTIONS.warningPopupWindow('tax has been removed');
+    UI_FUNCTIONS.toggleWarningPopupWindow('tax has been removed');
     return;
   }
 
-  UI_FUNCTIONS.warningPopupWindow('no items for tax to be canceled on');
+  UI_FUNCTIONS.toggleWarningPopupWindow('no items for tax to be canceled on');
 }
 
 function subTotalEntered() {
   if (CURRENT_SALE.calculateSubtotal()) {
     MAIN_POS.selectedFunctionChange('payment');
 
-    UI_FUNCTIONS.warningPopupWindow('please enter payment, then type of payment');
+    UI_FUNCTIONS.toggleWarningPopupWindow('please enter payment, then type of payment');
 
     return;
   }
 
-  UI_FUNCTIONS.warningPopupWindow('no items for subtotal to be calculated on');
+  UI_FUNCTIONS.toggleWarningPopupWindow('no items for subtotal to be calculated on');
 }
 
 function voidEntered() {
@@ -61,7 +62,9 @@ function voidEntered() {
 
   MAIN_POS.resetAfterSale();
 
-  UI_FUNCTIONS.warningPopupWindow('sale has been voided');
+  UI_FUNCTIONS.clearInputValueFullPurge();
+
+  UI_FUNCTIONS.toggleWarningPopupWindow('sale has been voided');
 }
 
 function newFunctionSelected(functionName) {
@@ -69,3 +72,12 @@ function newFunctionSelected(functionName) {
 
   MAIN_POS.selectedFunctionChange(functionName);
 }
+
+export {
+  barcodeEntered,
+  discountEntered,
+  noTaxEntered,
+  subTotalEntered,
+  voidEntered,
+  newFunctionSelected,
+};

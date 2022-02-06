@@ -33,7 +33,7 @@ const CURRENT_SALE = {
   },
   addDiscount(percentageAmount) {
     if (this.productsScanned.length === 0) {
-      UI_FUNCTIONS.openWarningPopupWindow('Error: cannot apply discount with no added items in sale cart');
+      UI_FUNCTIONS.toggleWarningPopupWindow('Error: cannot apply discount with no added items in sale cart');
 
       return false;
     }
@@ -43,8 +43,7 @@ const CURRENT_SALE = {
     return true;
   },
   removeTaxOnSale() {
-    if (this.scanProduct.length === 0) {
-      // error popup function
+    if (this.productsScanned.length === 0) {
       return false;
     }
 

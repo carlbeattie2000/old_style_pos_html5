@@ -6,46 +6,40 @@ const UI_FUNCTIONS = {
   keypadInputDisplay: document.getElementById('keypad_input_display'),
   warningPopupBox: document.getElementById('warning-message-popup'),
 
-  openWarningPopupWindow(message) {
-    const warningPopupMessageElementSelection = document.getElementById('warning-popup-message');
+  toggleWarningPopupWindow(message = '') {
+    const warningPopupMessage = document.getElementById('warning-popup-message');
 
-    warningPopupMessageElementSelection.textContent = message;
+    warningPopupMessage.textContent = message;
 
-    this.toggleDisableAllMainButtons();
+    if (this.warningPopupBox.classList.toggle('hidden')) {
+      this.toggleBackgroundFunctionality('none');
 
-    this.mainPOSBodySetFilter('Blur(4px)');
+      return;
+    }
 
-    this.warningPopupBox.classList.remove('hidden');
+    this.toggleBackgroundFunctionality('Blur(4px)');
   },
 
-  closeWarningPopupWindow() {
-    this.toggleDisableAllMainButtons();
+  toggleFindItemPopup() {
+    const findItemPopupStatus = this.findItemsPopup.classList.toggle('hidden');
 
-    this.mainPOSBodySetFilter('none');
+    if (findItemPopupStatus) {
+      this.toggleBackgroundFunctionality('none');
 
-    this.warningPopupBox.classList.add('hidden');
-  },
+      return;
+    }
 
-  openFindItemPopup() {
-    // run code to open find item popup
-  },
-
-  closeFindItemPopup() {
-    // run code to close find item popup
+    this.toggleBackgroundFunctionality('Blur(4px)');
   },
 
   openCashDrawOpenPopup() {
-    this.toggleDisableAllMainButtons();
-
-    this.mainPOSBodySetFilter('Blur(4px)');
+    this.toggleBackgroundFunctionality('Blur(4px)');
 
     this.cashDrawOpenPopup.classList.remove('hidden');
   },
 
   closeCashDrawOpenPopup() {
-    this.toggleDisableAllMainButtons();
-
-    this.mainPOSBodySetFilter('none');
+    this.toggleBackgroundFunctionality('none');
 
     this.cashDrawOpenPopup.classList.add('hidden');
   },
@@ -80,6 +74,11 @@ const UI_FUNCTIONS = {
 
   mainPOSBodySetFilter(filterType) {
     this.mainPOSBody.style.filter = filterType;
+  },
+
+  toggleBackgroundFunctionality(filterType) {
+    this.toggleDisableAllMainButtons();
+    this.mainPOSBodySetFilter(filterType);
   },
 };
 
