@@ -43,6 +43,7 @@ const POS_ACCOUNTING = {
 const POS_PRODUCTS_CURRENT_CUSTOMER = {
   products: [],
   totalPrice: 0,
+  taxRate: 10,
   totalTax: 0,
   discounts: 0,
   paymentMethod: "",
@@ -51,15 +52,70 @@ const POS_PRODUCTS_CURRENT_CUSTOMER = {
   cashback: 0,
   lotteryPayout: 0,
   changeDue: 0,
+  subTotalCalled: false,
   addNewProduct: function(product) {
-    this.totalTax += Math.round(product.price * (product.tax / 100));
-    this.totalPrice += product.price;
-    this.products.push(product);
 
-    return
+    if (this.products.includes(product)) {
+
+      this.totalTax += (this.taxRate / 100) * product.price;
+      this.totalPrice += product.price;
+
+      return this.products[this.products.indexOf(product)].qty += 1;
+    }
+
+    this.totalTax += (this.taxRate / 100) * product.price;
+    this.totalPrice += product.price;
+
+    product.qty = 1;
+
+    return this.products.push(product);
+
   },
   addDiscount: function(amount) {
     return this.discounts += amount;
+  },
+  subTotal: function() {
+    this.totalPrice += this.totalTax;
+    this.totalPrice -= this.totalPrice * (this.discounts / 100);
+    this.subTotalCalled = true;
+
+    updateTotalDisplay(handleCurrencyFormat(this.totalPrice));
+
+    return CUSTOMER_ITEMS_DISPLAY.innerHTML += customTaxTableRow(handleCurrencyFormat(this.totalTax));
+  },
+  noTax: function() {
+    this.taxRate = 0;
+    this.totalTax = 0;
+  },
+  cashPayment: function(amount) {
+
+    console.log(amount, this.totalPrice);
+
+    if (amount < this.totalPrice) {
+      return false
+    }
+
+    this.changeDue =  amount - this.totalPrice;
+
+    return ({
+      cashGive: amount,
+      change: handleCurrencyFormat(this.changeDue)
+    })
+
+  },
+  reset: function() {
+    this.products = [];
+    this.totalPrice = 0;
+    this.taxRate = 10;
+    this.totalTax = 0;
+    this.discounts = 0;
+    this.paymentMethod = "";
+    this.refund = false;
+    this.refundAmount = 0;
+    this.cashback = 0;
+    this.lotteryPayout = 0;
+    this.changeDue = 0;
+    this.subTotalCalled = false;
   }
 }
 
@@ -70,10 +126,10 @@ const POS_SYSTEM_ACTIONS = {
 
     POS_SYSTEM_VARIABLES.ITEMS_LIST.forEach(product => {
 
-      if (product.barcode == barcode && !itemAlreadyInTable(barcode, product.price)) {
+      if (product.barcode == barcode && !POS_PRODUCTS_CURRENT_CUSTOMER.subTotalCalled && !itemAlreadyInTable(product)) {
         CUSTOMER_ITEMS_DISPLAY.innerHTML += addProductTableRow(product);
 
-        console.log(POS_PRODUCTS_CURRENT_CUSTOMER.products, POS_PRODUCTS_CURRENT_CUSTOMER.totalTax);
+        POS_PRODUCTS_CURRENT_CUSTOMER.addNewProduct(product);
 
         return calcTotal();
       }
@@ -83,6 +139,20 @@ const POS_SYSTEM_ACTIONS = {
     return POS_BUTTON_ACTIONS.handleKeyPadClearFull();
 
   },
+  paymentProcessing: function() {
+    const paymentAmount = POS_BUTTON_ACTIONS.getKeypadInputValue();
+
+    switch (POS_SYSTEM_VARIABLES.KEYPAD_INPUT_TYPE) {
+      case "cash":
+        const processCashPayment = POS_PRODUCTS_CURRENT_CUSTOMER.cashPayment(paymentAmount);
+
+        if (!processCashPayment) return KEYPAD_INPUT_DISPLAY.value = "PLEASE ENTER A VALUE GREATER THAN TOTAL!"
+
+        return CHANGE_DUE_POPUP_DISPLAY.textContent = processCashPayment.change;
+      default:
+        break
+    }
+  }
 }
 
 const POS_BUTTON_ACTIONS = {
@@ -131,19 +201,25 @@ const POS_BUTTON_ACTIONS = {
 
     KEYPAD_INPUT_DISPLAY.placeholder = newType;
   },
+  getKeypadInputValue: function() {
+    return KEYPAD_INPUT_DISPLAY.value;
+  },
   runCurrentSystemFunction: function() {
+
     switch(POS_SYSTEM_VARIABLES.CURRENT_FUNCTION_ACTIVE) {
       case "barcode":
         POS_SYSTEM_ACTIONS.addingProductToOrder();
         break
       default:
-        break
+        break 
     }
+
   },
   VOID: function() {
     itemDisplayRemoveItems();
     KEYPAD_INPUT_DISPLAY.value = "";
     CUSTOMER_ITEMS_DISPLAY_TOTAL.value = "";
     this.handleKeyPadInputTypeChange("barcode");
+    POS_PRODUCTS_CURRENT_CUSTOMER.reset();
   }
 }
