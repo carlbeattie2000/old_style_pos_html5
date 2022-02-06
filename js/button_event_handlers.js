@@ -1,6 +1,12 @@
 CASH_BUTTON.addEventListener("click", () => {
+  POS_SYSTEM_VARIABLES.CHANGE_KEYPAD_INPUT_TYPE("cash");
+
+  POS_SYSTEM_ACTIONS.paymentProcessing();
   POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+  
+
   POS_BUTTON_ACTIONS.toggleCashDrawGUI();
+  POS_BUTTON_ACTIONS.VOID();
 })
 
 CLOSE_CASH_DRAW_BUTTON.addEventListener("click", () => {
@@ -9,6 +15,10 @@ CLOSE_CASH_DRAW_BUTTON.addEventListener("click", () => {
 
 FIND_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.toggleFindItemsGUI();
+})
+
+NO_TAX_BUTTON.addEventListener("click", () => {
+  POS_PRODUCTS_CURRENT_CUSTOMER.noTax();
 })
 
 CLOSE_ITEM_LOOKUP.addEventListener("click", () => {
@@ -83,6 +93,11 @@ CHECK_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.handleKeyPadInputTypeChange("check_number")
 })
 
+SUBTOTAL_BUTTON.addEventListener("click", () => {
+  POS_BUTTON_ACTIONS.handleKeyPadInputTypeChange("payment");
+  POS_PRODUCTS_CURRENT_CUSTOMER.subTotal();
+})
+
 ENTER_BUTTON.addEventListener("click", () => {
   POS_BUTTON_ACTIONS.runCurrentSystemFunction();
 })
@@ -91,3 +106,21 @@ ENTER_BUTTON.addEventListener("click", () => {
 const KEYPAD_BUTTONS = document.querySelectorAll(".keypad_button");
 
 KEYPAD_BUTTONS.forEach(button => button.addEventListener("click", (e) => POS_BUTTON_ACTIONS.handleKeyPadInput(e.target.value)));
+
+$_5_BUTTON.addEventListener("click", () => {
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+
+  POS_BUTTON_ACTIONS.handleKeyPadInput(5);
+})
+
+$_10_BUTTON.addEventListener("click", () => {
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+
+  POS_BUTTON_ACTIONS.handleKeyPadInput(10);
+})
+
+$_20_BUTTON.addEventListener("click", () => {
+  POS_BUTTON_ACTIONS.handleKeyPadClearFull();
+
+  POS_BUTTON_ACTIONS.handleKeyPadInput(20);
+})
