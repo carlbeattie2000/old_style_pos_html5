@@ -32,24 +32,28 @@ const CURRENT_SALE = {
   addDiscount(percentageAmount) {
     if (this.scanProduct.length === 0) {
       // error popup function
-      return;
+      return false;
     }
 
     this.discount += percentageAmount;
+
+    return true;
   },
   removeTaxOnSale() {
     if (this.scanProduct.length === 0) {
       // error popup function
-      return;
+      return false;
     }
 
     this.totalTaxPayable = 0;
     this.defaultTaxRate = 0;
+
+    return true;
   },
   calculateSubtotal() {
     if (this.subtotalCalled || this.scanProduct.length === 0) {
       // error popup function
-      return;
+      return false;
     }
 
     this.totalSalePrice += this.totalTaxPayable;
@@ -57,8 +61,10 @@ const CURRENT_SALE = {
 
     this.subtotalCalled = true;
 
+    return true;
+
     // update the total display
-    // add custom row showing the discount
+    // add custom row showing the tax added
   },
   resetToDefault() {
     this.productsScanned = [];
@@ -71,3 +77,5 @@ const CURRENT_SALE = {
     this.subtotalCalled = false;
   },
 };
+
+export default CURRENT_SALE;
