@@ -1,6 +1,6 @@
-import MAIN_POS from './main_pos';
-import CURRENT_SALE from './current_sale';
-import UI_FUNCTIONS from './ui_functions';
+import MAIN_POS from './main_pos.js';
+import CURRENT_SALE from './current_sale.js';
+import UI_FUNCTIONS from './ui_functions.js';
 
 function barcodeEntered() {
   // get barcode value from document input value
