@@ -63,5 +63,3 @@ function voidEntered() {
 
   UI_FUNCTIONS.warningPopupWindow('sale has been voided');
 }
-
-

@@ -1,5 +1,8 @@
 const UI_FUNCTIONS = {
-  // ui elements attachments go here
+  cashDrawOpenPopup: document.getElementById('close_cash_draw'),
+  findItemsPopup: document.getElementById('find_items_popup'),
+  allPOSButtons: document.querySelectorAll('.btn-pos'),
+  mainPOSBody: document.querySelector('.main_pos_body'),
   warningPopupWindow(message) {
     console.error(new Error(message)); // will show popup window with error message
   },
@@ -13,10 +16,18 @@ const UI_FUNCTIONS = {
     // run code to close find item popup
   },
   openCashDrawOpenPopup() {
-    // run code to open close cash draw popup
+    this.toggleDisableAllMainButtons();
+
+    this.mainPOSBodySetFilter('Blur(4px)');
+
+    this.cashDrawOpenPopup.classList.remove('hidden');
   },
   closeCashDrawOpenPopup() {
-    // run code to close cash draw open popup
+    this.toggleDisableAllMainButtons();
+
+    this.mainPOSBodySetFilter('none');
+
+    this.cashDrawOpenPopup.classList.add('hidden');
   },
   clearInputValueByOneCharacter() {
 
@@ -29,6 +40,16 @@ const UI_FUNCTIONS = {
   },
   updateInputPlaceholderWithSelectedFunction(selectedFuntion) {
 
+  },
+  toggleDisableAllMainButtons() {
+    this.allPOSButtons.forEach((button) => {
+      const buttonToDisable = button;
+
+      buttonToDisable.disabled = !buttonToDisable.disabled;
+    });
+  },
+  mainPOSBodySetFilter(filterType) {
+    this.mainPOSBody.style.filter = filterType;
   },
 };
 
