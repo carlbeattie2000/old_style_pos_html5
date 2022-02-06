@@ -63,3 +63,9 @@ function voidEntered() {
 
   UI_FUNCTIONS.warningPopupWindow('sale has been voided');
 }
+
+function newFunctionSelected(functionName) {
+  UI_FUNCTIONS.updateInputPlaceholderWithSelectedFunction(functionName);
+
+  MAIN_POS.selectedFunctionChange(functionName);
+}

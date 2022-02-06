@@ -53,8 +53,8 @@ const UI_FUNCTIONS = {
     this.keypadInputDisplay.value += input;
   },
 
-  updateInputPlaceholderWithSelectedFunction(selectedFuntion) {
-
+  updateInputPlaceholderWithSelectedFunction(selectedFunction) {
+    this.keypadInputDisplay.placeholder = selectedFunction;
   },
 
   toggleDisableAllMainButtons() {
