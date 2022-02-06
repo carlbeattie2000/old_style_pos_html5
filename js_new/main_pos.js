@@ -2,8 +2,6 @@ const MAIN_POS = {
   cashInRegister: 300,
   currentStatus: 'WAITING_FOR_FUNCTION',
   currentSelectedFunction: 'barcode',
-  cashDrawStatus: false,
-  findItemWindowStatus: false,
   POSItemList: [],
   transactions: [],
   accounting: {
@@ -20,3 +18,5 @@ const MAIN_POS = {
     this.currentSelectedFunction = newFunctionSelected;
   },
 };
+
+export default MAIN_POS;
