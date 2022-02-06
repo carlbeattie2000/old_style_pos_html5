@@ -37,3 +37,7 @@ document.body.onload = () => {
       FIND_ITEMS_ITEM_DISPLAY.innerHTML = elementsToAdd
     })
 }
+
+function handleCurrencyFormat(amount) {
+  return amount / 100
+}
