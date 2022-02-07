@@ -88,6 +88,20 @@ const UI_FUNCTIONS = {
     this.saleItemsDisplay.innerHTML += newElementToAdd;
   },
 
+  addNewCustomTableRow(title, qty, totalPrice) {
+    const newElementToAdd = `
+      <tr id="${title}">
+        <td></td>
+        <td>${title}</td>
+        <td id="qty_${qty}">1</td>
+        <td></td>
+        <td id="total_${product.barcode}">${this.renderClientCurrencyFormat(totalPrice)}</td>
+      </tr>
+    `;
+
+    this.saleItemsDisplay.innerHTML += newElementToAdd;
+  },
+
   updateProductQty(barcode) {
     const elementToEdit = document.getElementById(`qty_${barcode}`);
 
@@ -102,6 +116,16 @@ const UI_FUNCTIONS = {
     });
 
     this.totalDisplay.value = `$ ${this.renderClientCurrencyFormat(total)}`;
+  },
+
+  clearProductsInSale() {
+    const rowsToFilterThrough = [...this.saleItemsDisplay.childNodes];
+
+    const filteredRows = rowsToFilterThrough.filter((tableRow) => tableRow.id);
+
+    filteredRows.forEach((tableRow) => tableRow.remove());
+
+    this.totalDisplay.value = '$';
   },
 
   toggleDisableAllMainButtons() {
