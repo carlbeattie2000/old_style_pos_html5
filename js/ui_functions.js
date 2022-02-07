@@ -4,6 +4,7 @@ const UI_FUNCTIONS = {
   allPOSButtons: document.querySelectorAll('.btn-pos'),
   mainPOSBody: document.querySelector('.main_pos_body'),
   keypadInputDisplay: document.getElementById('keypad_input_display'),
+  saleItemsDisplay: document.getElementById('items_basket'),
   warningPopupBox: document.getElementById('warning-message-popup'),
 
   toggleWarningPopupWindow(message = '') {
@@ -66,6 +67,24 @@ const UI_FUNCTIONS = {
 
   updateInputPlaceholderWithSelectedFunction(selectedFunction) {
     this.keypadInputDisplay.placeholder = selectedFunction;
+  },
+
+  renderClientCurrencyFormat(amount) {
+    return amount / 100;
+  },
+
+  addNewSaleProduct(product) {
+    const newElementToAdd = `
+      <tr id="${product.barcode}">
+        <td>${product.barcode}</td>
+        <td>${product.name}</td>
+        <td id="qty_${product.barcode}">1</td>
+        <td>@${this.renderClientCurrencyFormat(product.price)}</td>
+        <td id="total_${product.barcode}">${this.renderClientCurrencyFormat(product.price)}</td>
+      </tr>
+    `;
+
+    this.saleItemsDisplay.innerHTML += newElementToAdd();
   },
 
   toggleDisableAllMainButtons() {
