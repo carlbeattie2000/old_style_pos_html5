@@ -3,10 +3,7 @@ import MAIN_POS from './main_pos.js';
 import CURRENT_SALE from './current_sale.js';
 import UI_FUNCTIONS from './ui_functions.js';
 
-function barcodeEntered() {
-  // get barcode value from document input value
-  const barcodeToCheck = '';
-
+function barcodeEntered(barcodeToCheck) {
   const searchThroughItems = MAIN_POS.POSItemList;
 
   searchThroughItems
@@ -21,13 +18,10 @@ function barcodeEntered() {
       }
     });
 
-  UI_FUNCTIONS.warningPopupWindow('no item found');
+  UI_FUNCTIONS.toggleWarningPopupWindow('no item found');
 }
 
-function discountEntered() {
-  // get the discount value
-  const discountToAdd = '';
-
+function discountEntered(discountToAdd) {
   if (CURRENT_SALE.addDiscount(discountToAdd)) {
     // add to GUI
     return;

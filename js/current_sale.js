@@ -32,9 +32,7 @@ const CURRENT_SALE = {
     this.productsScanned.push(productToAdd);
   },
   addDiscount(percentageAmount) {
-    if (this.productsScanned.length === 0) {
-      UI_FUNCTIONS.toggleWarningPopupWindow('Error: cannot apply discount with no added items in sale cart');
-
+    if (this.productsScanned.length === 0 || percentageAmount > 100) {
       return false;
     }
 

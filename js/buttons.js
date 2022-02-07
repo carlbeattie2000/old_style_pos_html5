@@ -2,6 +2,7 @@
 import CURRENT_SALE from './current_sale.js';
 import UI_FUNCTIONS from './ui_functions.js';
 import { noTaxEntered, voidEntered, newFunctionSelected } from './input_functions.js';
+import functionSwitch from './input_function_switcher.js';
 
 const POS_BUTTONS = {
   openCashRegister: document.getElementById('cash_register_open'),
@@ -15,6 +16,7 @@ const POS_BUTTONS = {
   clearInput: document.getElementById('clear_button'),
   barcode: document.getElementById('barcode_button'),
   keypadButtons: document.querySelectorAll('.keypad_button'),
+  enter: document.getElementById('enter_button'),
   warningPopupClose: document.getElementById('warning-popup-close'),
 };
 
@@ -64,6 +66,12 @@ POS_BUTTONS.keypadButtons.forEach((keypadButton) => {
   keypadButtonSelected.addEventListener('click', (e) => {
     UI_FUNCTIONS.addCharacterToInputValue(e.target.value);
   });
+});
+
+POS_BUTTONS.enter.addEventListener('click', () => {
+  functionSwitch();
+
+  UI_FUNCTIONS.clearInputValueFullPurge();
 });
 
 POS_BUTTONS.warningPopupClose.addEventListener('click', () => {

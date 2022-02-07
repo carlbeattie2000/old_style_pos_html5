@@ -60,6 +60,10 @@ const UI_FUNCTIONS = {
     this.keypadInputDisplay.value += input;
   },
 
+  getKeypadInput() {
+    return this.keypadInputDisplay.value;
+  },
+
   updateInputPlaceholderWithSelectedFunction(selectedFunction) {
     this.keypadInputDisplay.placeholder = selectedFunction;
   },
