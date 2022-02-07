@@ -1,4 +1,4 @@
-import { clientSideCurrencyRendering } from './input_functions.js';
+import { clientSideCurrencyRendering, barcodeEntered } from './input_functions.js';
 
 const MAIN_POS = {
   startingCashInRegister: 3000,
@@ -45,7 +45,7 @@ function itemDivTemplate(
         <p>${barcode}</p>
       </div>
       <div class="add-item">
-        <button>Add</button>
+        <button class="add-item-btn" value="${barcode}">Add</button>
       </div>
     </div>
     `
@@ -64,12 +64,39 @@ function loadItemsIntoGUI(items) {
   findElementsGridID.innerHTML = newElementsToAdd;
 }
 
+function loadFindItemsSearchEvent() {
+  const searchInput = document.getElementById('itemSearch');
+
+  searchInput.addEventListener('input', (e) => {
+    const foundResults = MAIN_POS.POSItemList
+      .filter((item) => {
+        if (item.name.toLowerCase().includes(e.target.value) || item.category.toLowerCase().includes(e.target.value)) {
+          return item;
+        }
+      });
+
+    loadItemsIntoGUI(foundResults);
+  });
+}
+
+function loadFindItemsAddButtons() {
+  const buttons = document.querySelectorAll('.add-item-btn');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      barcodeEntered(e.target.value);
+    });
+  });
+}
+
 loadItemsIntoMainPosList()
   .then((items) => {
     MAIN_POS.POSItemList = items.products;
   })
   .finally(() => {
     loadItemsIntoGUI(MAIN_POS.POSItemList);
+    loadFindItemsSearchEvent();
+    loadFindItemsAddButtons();
   });
 
 export default MAIN_POS;
