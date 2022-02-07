@@ -60,7 +60,8 @@ const CURRENT_SALE = {
   },
   calculateSubtotal() {
     if (this.subtotalCalled || this.scanProduct.length === 0) {
-      // error popup function
+      UI_FUNCTIONS.toggleWarningPopupWindow('Error: subtotal cannot be calculated');
+
       return false;
     }
 
@@ -69,7 +70,7 @@ const CURRENT_SALE = {
 
     this.subtotalCalled = true;
 
-    return true;
+    return this.totalSalePrice;
 
     // update the total display
     // add custom row showing the tax added

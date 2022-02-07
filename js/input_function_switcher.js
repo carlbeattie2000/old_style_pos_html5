@@ -3,6 +3,10 @@ import UI_FUNCTIONS from './ui_functions.js';
 import { barcodeEntered, discountEntered } from './input_functions.js';
 
 function functionSwitch() {
+  if (MAIN_POS.currentStatus === 'WAITING_FOR_PAYMENT') {
+    UI_FUNCTIONS.toggleWarningPopupWindow('Error: waiting for payment');
+  }
+
   const keypadInput = UI_FUNCTIONS.getKeypadInput();
 
   if (!keypadInput) {

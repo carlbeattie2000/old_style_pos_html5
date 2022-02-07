@@ -3,6 +3,7 @@ import CURRENT_SALE from './current_sale.js';
 import UI_FUNCTIONS from './ui_functions.js';
 import { noTaxEntered, voidEntered, newFunctionSelected } from './input_functions.js';
 import functionSwitch from './input_function_switcher.js';
+import MAIN_POS from './main_pos.js';
 
 const POS_BUTTONS = {
   openCashRegister: document.getElementById('cash_register_open'),
@@ -16,6 +17,7 @@ const POS_BUTTONS = {
   clearInput: document.getElementById('clear_button'),
   barcode: document.getElementById('barcode_button'),
   keypadButtons: document.querySelectorAll('.keypad_button'),
+  subtotal: document.getElementById('subtotal_button'),
   enter: document.getElementById('enter_button'),
   warningPopupClose: document.getElementById('warning-popup-close'),
 };
@@ -66,6 +68,15 @@ POS_BUTTONS.keypadButtons.forEach((keypadButton) => {
   keypadButtonSelected.addEventListener('click', (e) => {
     UI_FUNCTIONS.addCharacterToInputValue(e.target.value);
   });
+});
+
+POS_BUTTONS.subtotal.addEventListener('click', () => {
+  const returnedValueOfCalculatedSubTotal = CURRENT_SALE.calculateSubtotal();
+  if (returnedValueOfCalculatedSubTotal) {
+    UI_FUNCTIONS.calculateTotalSalePrice();
+
+    MAIN_POS.currentStatus = 'WAITING_FOR_PAYMENT';
+  }
 });
 
 POS_BUTTONS.enter.addEventListener('click', () => {
