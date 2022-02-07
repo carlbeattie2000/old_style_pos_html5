@@ -30,6 +30,9 @@ const POS_BUTTONS = {
   giftCard: document.getElementById('gift_card_button'),
   voucher: document.getElementById('voucher_button'),
   card: document.getElementById('card_button'),
+  $20: document.getElementById('$_20_button'),
+  $10: document.getElementById('$_10_button'),
+  $5: document.getElementById('$_5_button'),
   cash: document.getElementById('cash_button'),
   warningPopupClose: document.getElementById('warning-popup-close'),
 };
@@ -143,4 +146,37 @@ POS_BUTTONS.cash.addEventListener('click', () => {
 
 POS_BUTTONS.warningPopupClose.addEventListener('click', () => {
   UI_FUNCTIONS.toggleWarningPopupWindow();
+});
+
+POS_BUTTONS.$5.addEventListener('click', () => {
+  if (!UI_FUNCTIONS.keypadInputDisplay.value) {
+    UI_FUNCTIONS.keypadInputDisplay.value = 5;
+
+    return;
+  }
+
+  const newValue = parseInt(UI_FUNCTIONS.keypadInputDisplay.value, 10) + 5;
+  UI_FUNCTIONS.keypadInputDisplay.value = newValue;
+});
+
+POS_BUTTONS.$10.addEventListener('click', () => {
+  if (!UI_FUNCTIONS.keypadInputDisplay.value) {
+    UI_FUNCTIONS.keypadInputDisplay.value = 10;
+
+    return;
+  }
+
+  const newValue = parseInt(UI_FUNCTIONS.keypadInputDisplay.value, 10) + 10;
+  UI_FUNCTIONS.keypadInputDisplay.value = newValue;
+});
+
+POS_BUTTONS.$20.addEventListener('click', () => {
+  if (!UI_FUNCTIONS.keypadInputDisplay.value) {
+    UI_FUNCTIONS.keypadInputDisplay.value = 20;
+
+    return;
+  }
+
+  const newValue = parseInt(UI_FUNCTIONS.keypadInputDisplay.value, 10) + 20;
+  UI_FUNCTIONS.keypadInputDisplay.value = newValue;
 });
