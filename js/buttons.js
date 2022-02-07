@@ -24,6 +24,12 @@ const POS_BUTTONS = {
   keypadButtons: document.querySelectorAll('.keypad_button'),
   subtotal: document.getElementById('subtotal_button'),
   enter: document.getElementById('enter_button'),
+  check: document.getElementById('check_button'),
+  coupon: document.getElementById('coupon_button'),
+  giftCard: document.getElementById('gift_card_button'),
+  voucher: document.getElementById('voucher_button'),
+  card: document.getElementById('card_button'),
+  cash: document.getElementById('cash'),
   warningPopupClose: document.getElementById('warning-popup-close'),
 };
 
