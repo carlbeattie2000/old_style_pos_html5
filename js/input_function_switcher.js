@@ -1,6 +1,6 @@
 import MAIN_POS from './main_pos.js';
 import UI_FUNCTIONS from './ui_functions.js';
-import { barcodeEntered, discountEntered } from './input_functions.js';
+import { barcodeEntered, discountEntered, customItem } from './input_functions.js';
 
 function functionSwitch() {
   if (MAIN_POS.currentStatus === 'WAITING_FOR_PAYMENT') {
@@ -25,6 +25,9 @@ function functionSwitch() {
       break;
     case 'discount':
       discountEntered(keypadInput);
+      break;
+    case 'price':
+      customItem(keypadInput);
       break;
     default:
       break;

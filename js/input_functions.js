@@ -74,6 +74,14 @@ function voidEntered() {
   UI_FUNCTIONS.toggleWarningPopupWindow('sale has been voided');
 }
 
+function customItem(price) {
+  CURRENT_SALE.scanProduct({ price });
+
+  UI_FUNCTIONS.addNewCustomTableRow('NO_NAME', 1, price);
+
+  UI_FUNCTIONS.calculateTotalSalePrice(CURRENT_SALE.productsScanned);
+}
+
 function newFunctionSelected(functionName) {
   UI_FUNCTIONS.updateInputPlaceholderWithSelectedFunction(functionName);
 
@@ -91,5 +99,6 @@ export {
   subTotalEntered,
   voidEntered,
   newFunctionSelected,
-  clientSideCurrencyRendering
+  clientSideCurrencyRendering,
+  customItem,
 };

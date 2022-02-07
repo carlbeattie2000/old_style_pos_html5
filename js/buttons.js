@@ -14,6 +14,7 @@ const POS_BUTTONS = {
   noTax: document.getElementById('no_tax_button'),
   voidSale: document.getElementById('void_button'),
   discountSale: document.getElementById('discount_percentage_button'),
+  price: document.getElementById('price_button'),
   clearInput: document.getElementById('clear_button'),
   barcode: document.getElementById('barcode_button'),
   keypadButtons: document.querySelectorAll('.keypad_button'),
@@ -52,6 +53,10 @@ POS_BUTTONS.voidSale.addEventListener('click', () => {
 
 POS_BUTTONS.discountSale.addEventListener('click', () => {
   newFunctionSelected('discount');
+});
+
+POS_BUTTONS.price.addEventListener('click', () => {
+  newFunctionSelected('price');
 });
 
 POS_BUTTONS.clearInput.addEventListener('click', () => {
