@@ -9,13 +9,17 @@ const CURRENT_SALE = {
   paymentMethod: '',
   changeDue: 0,
   subtotalCalled: false,
-  calculateTaxOnProduct(productPrice) {
-    this.totalTaxPayable += (this.defaultTaxRate / 100) * productPrice;
+  calculateTaxOnProduct(cost) {
+    const taxPayable = Math.floor((this.defaultTaxRate / 100) * cost);
+
+    this.totalTaxPayable += taxPayable;
+
+    return taxPayable;
   },
   scannedProductAlreadyExist(product) {
     if (this.productsScanned.includes(product)) {
       this.totalSalePrice += product.price;
-      this.calculateTaxOnProduct(product.price);
+
       return true;
     }
 
@@ -30,7 +34,6 @@ const CURRENT_SALE = {
       return false;
     }
 
-    this.calculateTaxOnProduct(productToAdd.price);
     this.totalSalePrice += productToAdd.price;
 
     productToAdd.qty = 1;
@@ -65,7 +68,7 @@ const CURRENT_SALE = {
       return false;
     }
 
-    this.totalSalePrice += this.totalTaxPayable;
+    this.totalSalePrice += this.calculateTaxOnProduct(this.totalSalePrice);
 
     UI_FUNCTIONS.addNewCustomTableRow('Tax', 1, this.totalTaxPayable);
 
@@ -78,9 +81,6 @@ const CURRENT_SALE = {
     this.subtotalCalled = true;
 
     return this.totalSalePrice;
-
-    // update the total display
-    // add custom row showing the tax added
   },
   resetToDefault() {
     this.productsScanned = [];

@@ -2,6 +2,10 @@ import MAIN_POS from './main_pos.js';
 import UI_FUNCTIONS from './ui_functions.js';
 import { barcodeEntered, discountEntered, customItem } from './input_functions.js';
 
+function convertKeypadCurrencyInput(value) {
+  return parseInt(value * 100, 10);
+}
+
 function functionSwitch() {
   if (MAIN_POS.currentStatus === 'WAITING_FOR_PAYMENT') {
     UI_FUNCTIONS.toggleWarningPopupWindow('Error: waiting for payment');
@@ -27,7 +31,7 @@ function functionSwitch() {
       discountEntered(keypadInput);
       break;
     case 'price':
-      customItem(keypadInput);
+      customItem(convertKeypadCurrencyInput(keypadInput));
       break;
     default:
       break;
