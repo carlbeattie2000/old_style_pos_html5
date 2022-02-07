@@ -1,8 +1,49 @@
-import CURRENT_SALE from "./current_sale";
-import UI_FUNCTIONS from "./ui_functions";
+import CURRENT_SALE from "./current_sale.js";
+import MAIN_POS from "./main_pos.js";
+import UI_FUNCTIONS from "./ui_functions.js";
 
 function newSale() {
-  // do something
+  MAIN_POS.resetAfterSale();
+  CURRENT_SALE.resetToDefault();
+  MAIN_POS.selectedFunctionChange('barcode');
+  UI_FUNCTIONS.newSaleClear();
+}
+
+function convertKeypadCurrencyInput(value) {
+  return parseInt(value * 100, 10);
+}
+
+function saveTransaction(amountGiven, type = '') {
+  if (amountGiven < CURRENT_SALE.totalSalePrice) {
+    UI_FUNCTIONS.toggleWarningPopupWindow('inefficient amount given');
+    return false;
+  }
+
+  let changeGiven;
+
+  if (type === 'cash') {
+    const cashDrawChangeDue = document.getElementById('close_cash_draw_change_due');
+
+    cashDrawChangeDue.textContent = `$${UI_FUNCTIONS.renderClientCurrencyFormat(changeGiven)}`;
+
+    changeGiven = amountGiven - CURRENT_SALE.totalSalePrice;
+  } else {
+    changeGiven = 0;
+  }
+
+  const transaction = {
+    items: CURRENT_SALE.productsScanned,
+    total: CURRENT_SALE.totalSalePrice,
+    tax: CURRENT_SALE.totalTaxPayable,
+    change: changeGiven,
+  };
+
+  MAIN_POS.cashInRegister += CURRENT_SALE.totalSalePrice - changeGiven;
+  MAIN_POS.transactions.push(transaction);
+
+  UI_FUNCTIONS.openCashDrawOpenPopup();
+
+  return true;
 }
 
 const PAYMENT_SYSTEM = {
@@ -12,6 +53,8 @@ const PAYMENT_SYSTEM = {
 
       return false;
     }
+
+    saveTransaction(convertKeypadCurrencyInput(keypadInput));
 
     newSale();
 
@@ -24,6 +67,8 @@ const PAYMENT_SYSTEM = {
       return false;
     }
 
+    saveTransaction(convertKeypadCurrencyInput(keypadInput));
+
     newSale();
 
     return true;
@@ -35,6 +80,8 @@ const PAYMENT_SYSTEM = {
       return false;
     }
 
+    saveTransaction(convertKeypadCurrencyInput(keypadInput));
+
     newSale();
 
     return true;
@@ -45,6 +92,8 @@ const PAYMENT_SYSTEM = {
 
       return false;
     }
+
+    saveTransaction(convertKeypadCurrencyInput(keypadInput));
 
     newSale();
 
@@ -59,6 +108,8 @@ const PAYMENT_SYSTEM = {
 
       return false;
     }
+
+    saveTransaction(convertKeypadCurrencyInput(keypadInput), 'cash');
 
     newSale();
 

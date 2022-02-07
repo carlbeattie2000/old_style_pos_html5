@@ -4,6 +4,7 @@ import UI_FUNCTIONS from './ui_functions.js';
 import { noTaxEntered, voidEntered, newFunctionSelected } from './input_functions.js';
 import functionSwitch from './input_function_switcher.js';
 import MAIN_POS from './main_pos.js';
+import PAYMENT_SYSTEM from './payments.js';
 
 const POS_BUTTONS = {
   openCashRegister: document.getElementById('cash_register_open'),
@@ -117,27 +118,27 @@ POS_BUTTONS.enter.addEventListener('click', () => {
 });
 
 POS_BUTTONS.check.addEventListener('click', () => {
-  console.log("testing");
+  PAYMENT_SYSTEM.check(UI_FUNCTIONS.getKeypadInput());
 });
 
 POS_BUTTONS.coupon.addEventListener('click', () => {
-  console.log("testing");
+  PAYMENT_SYSTEM.coupon(UI_FUNCTIONS.getKeypadInput());
 });
 
 POS_BUTTONS.giftCard.addEventListener('click', () => {
-  console.log("testing");
+  PAYMENT_SYSTEM.giftCard(UI_FUNCTIONS.getKeypadInput());
 });
 
 POS_BUTTONS.voucher.addEventListener('click', () => {
-  console.log("testing");
+  PAYMENT_SYSTEM.voucher(UI_FUNCTIONS.getKeypadInput());
 });
 
 POS_BUTTONS.card.addEventListener('click', () => {
-  console.log("testing");
+  PAYMENT_SYSTEM.card(UI_FUNCTIONS.getKeypadInput());
 });
 
 POS_BUTTONS.cash.addEventListener('click', () => {
-  console.log("testing");
+  PAYMENT_SYSTEM.cash(UI_FUNCTIONS.getKeypadInput());
 });
 
 POS_BUTTONS.warningPopupClose.addEventListener('click', () => {

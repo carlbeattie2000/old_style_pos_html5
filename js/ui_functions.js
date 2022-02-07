@@ -150,6 +150,13 @@ const UI_FUNCTIONS = {
     this.toggleDisableAllMainButtons();
     this.mainPOSBodySetFilter(filterType);
   },
+
+  newSaleClear() {
+    this.clearInputValueFullPurge();
+    this.clearProductsInSale();
+    this.saleItemsDisplay.value = '';
+    this.keypadInputDisplay.placeholder = 'barcode';
+  },
 };
 
 UI_FUNCTIONS.totalDisplay.value = '';
