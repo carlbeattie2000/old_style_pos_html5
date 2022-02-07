@@ -19,16 +19,10 @@ function saveTransaction(amountGiven, type = '') {
     return false;
   }
 
-  let changeGiven;
+  let changeGiven = 0;
 
   if (type === 'cash') {
-    const cashDrawChangeDue = document.getElementById('close_cash_draw_change_due');
-
-    cashDrawChangeDue.textContent = `$${UI_FUNCTIONS.renderClientCurrencyFormat(changeGiven)}`;
-
     changeGiven = amountGiven - CURRENT_SALE.totalSalePrice;
-  } else {
-    changeGiven = 0;
   }
 
   const transaction = {
@@ -37,6 +31,10 @@ function saveTransaction(amountGiven, type = '') {
     tax: CURRENT_SALE.totalTaxPayable,
     change: changeGiven,
   };
+
+  const cashDrawChangeDue = document.getElementById('close_cash_draw_change_due');
+
+  cashDrawChangeDue.textContent = `$${UI_FUNCTIONS.renderClientCurrencyFormat(changeGiven)}`;
 
   MAIN_POS.cashInRegister += CURRENT_SALE.totalSalePrice - changeGiven;
   MAIN_POS.transactions.push(transaction);

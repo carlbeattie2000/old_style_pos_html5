@@ -76,7 +76,9 @@ const CURRENT_SALE = {
     if (this.discount > 0) {
       this.totalSalePrice -= Math.floor(this.totalSalePrice * (this.discount / 100));
 
-      UI_FUNCTIONS.addNewCustomTableRow('Discount', 1, `${Math.floor(this.totalSalePrice * (this.discount / 100))}`);
+      const discountAmount = Math.floor(this.totalSalePrice * (this.discount / 100));
+
+      UI_FUNCTIONS.addNewCustomTableRow('discount_00', 'Discount', 1, `${discountAmount}`);
     }
 
     this.subtotalCalled = true;
