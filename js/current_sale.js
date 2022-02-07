@@ -12,13 +12,19 @@ const CURRENT_SALE = {
   calculateTaxOnProduct(productPrice) {
     this.totalTaxPayable += (this.defaultTaxRate / 100) * productPrice;
   },
+  scannedProductAlreadyExist(product) {
+    if (this.productsScanned.includes(product)) {
+      this.totalSalePrice += product.price;
+      this.calculateTaxOnProduct(product.price);
+      return true;
+    }
+
+    return false;
+  },
   scanProduct(product) {
     const productToAdd = product;
 
-    if (this.productsScanned.includes(productToAdd)) {
-      this.calculateTaxOnProduct(productToAdd.price);
-      this.totalSalePrice += productToAdd.price;
-
+    if (this.scannedProductAlreadyExist(productToAdd)) {
       this.productsScanned[this.productsScanned.indexOf(productToAdd)].qty += 1;
 
       return false;

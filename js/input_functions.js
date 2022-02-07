@@ -13,10 +13,14 @@ function barcodeEntered(barcodeToCheck) {
       if (product.barcode === barcodeToCheck) {
         if (CURRENT_SALE.scanProduct(product)) {
           UI_FUNCTIONS.addNewSaleProduct(product);
+        } else {
+          UI_FUNCTIONS.updateProductQty(product.barcode);
         }
 
         itemFound = true;
-        // function to calc the total
+
+        UI_FUNCTIONS.calculateTotalSalePrice(CURRENT_SALE.productsScanned);
+
         return true;
       }
 
@@ -64,6 +68,8 @@ function voidEntered() {
   MAIN_POS.resetAfterSale();
 
   UI_FUNCTIONS.clearInputValueFullPurge();
+
+  UI_FUNCTIONS.clearProductsInSale();
 
   UI_FUNCTIONS.toggleWarningPopupWindow('sale has been voided');
 }

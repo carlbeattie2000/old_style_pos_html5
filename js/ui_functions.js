@@ -4,6 +4,7 @@ const UI_FUNCTIONS = {
   allPOSButtons: document.querySelectorAll('.btn-pos'),
   mainPOSBody: document.querySelector('.main_pos_body'),
   keypadInputDisplay: document.getElementById('keypad_input_display'),
+  totalDisplay: document.getElementById('item_display_total'),
   saleItemsDisplay: document.getElementById('items_basket'),
   warningPopupBox: document.getElementById('warning-message-popup'),
 
@@ -85,6 +86,22 @@ const UI_FUNCTIONS = {
     `;
 
     this.saleItemsDisplay.innerHTML += newElementToAdd;
+  },
+
+  updateProductQty(barcode) {
+    const elementToEdit = document.getElementById(`qty_${barcode}`);
+
+    elementToEdit.textContent = parseInt(elementToEdit.textContent, 10) + 1;
+  },
+
+  calculateTotalSalePrice(currentSaleProducts) {
+    let total = 0;
+
+    currentSaleProducts.forEach((product) => {
+      total += product.price * product.qty;
+    });
+
+    this.totalDisplay.value = `$ ${this.renderClientCurrencyFormat(total)}`;
   },
 
   toggleDisableAllMainButtons() {
