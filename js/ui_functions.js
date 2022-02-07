@@ -95,17 +95,19 @@ const UI_FUNCTIONS = {
         <td>${title}</td>
         <td id="qty_${qty}">1</td>
         <td></td>
-        <td id="total_${product.barcode}">${this.renderClientCurrencyFormat(totalPrice)}</td>
+        <td id="total_${title}">${this.renderClientCurrencyFormat(totalPrice)}</td>
       </tr>
     `;
 
     this.saleItemsDisplay.innerHTML += newElementToAdd;
   },
 
-  updateProductQty(barcode) {
-    const elementToEdit = document.getElementById(`qty_${barcode}`);
+  updateProductQty(barcode, price) {
+    const qtyElement = document.getElementById(`qty_${barcode}`);
+    const netSaleElement = document.getElementById(`total_${barcode}`);
 
-    elementToEdit.textContent = parseInt(elementToEdit.textContent, 10) + 1;
+    qtyElement.textContent = parseInt(qtyElement.textContent, 10) + 1;
+    netSaleElement.textContent = this.renderClientCurrencyFormat(price * parseInt(qtyElement.textContent, 10));
   },
 
   calculateTotalSalePrice(currentSaleProducts) {

@@ -14,7 +14,7 @@ function barcodeEntered(barcodeToCheck) {
         if (CURRENT_SALE.scanProduct(product)) {
           UI_FUNCTIONS.addNewSaleProduct(product);
         } else {
-          UI_FUNCTIONS.updateProductQty(product.barcode);
+          UI_FUNCTIONS.updateProductQty(product.barcode, product.price);
         }
 
         itemFound = true;
