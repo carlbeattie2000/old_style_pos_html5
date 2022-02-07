@@ -1,6 +1,7 @@
 import { clientSideCurrencyRendering } from './input_functions.js';
 
 const MAIN_POS = {
+  startingCashInRegister: 3000,
   cashInRegister: 30000,
   currentStatus: 'WAITING_FOR_FUNCTION',
   currentSelectedFunction: 'barcode',

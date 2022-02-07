@@ -9,10 +9,12 @@ const POS_BUTTONS = {
   openCashRegister: document.getElementById('cash_register_open'),
   closeCashRegister: document.getElementById('close_cash_draw_button'),
   employeeDiscount: document.getElementById('employee_discount_button'),
+  dayEnd: document.getElementById('day_end_button'),
   findItems: document.getElementById('find_button'),
   closeFindItems: document.getElementById('close_item_lookup'),
   noTax: document.getElementById('no_tax_button'),
   weight: document.getElementById('weight_button'),
+  overTwentyFive: document.getElementById('over_25_button'),
   voidSale: document.getElementById('void_button'),
   refundSale: document.getElementById('refund_button'),
   discountSale: document.getElementById('discount_percentage_button'),
@@ -37,6 +39,10 @@ POS_BUTTONS.employeeDiscount.addEventListener('click', () => {
   CURRENT_SALE.addDiscount(30);
 });
 
+POS_BUTTONS.dayEnd.addEventListener('click', () => {
+  UI_FUNCTIONS.toggleWarningPopupWindow('need to add popup that displays window with previous transactions etc for the day');
+});
+
 POS_BUTTONS.findItems.addEventListener('click', () => {
   UI_FUNCTIONS.toggleFindItemPopup();
 });
@@ -51,6 +57,10 @@ POS_BUTTONS.noTax.addEventListener('click', () => {
 
 POS_BUTTONS.weight.addEventListener('click', () => {
   newFunctionSelected('weight');
+});
+
+POS_BUTTONS.overTwentyFive.addEventListener('click', () => {
+  UI_FUNCTIONS.addNewCustomTableRow('age', 'Age Check Verified', 1, 0);
 });
 
 POS_BUTTONS.voidSale.addEventListener('click', () => {
