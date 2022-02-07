@@ -63,7 +63,7 @@ const CURRENT_SALE = {
     return true;
   },
   calculateSubtotal() {
-    if (this.subtotalCalled || this.scanProduct.length === 0) {
+    if (this.subtotalCalled || this.productsScanned.length === 0) {
       UI_FUNCTIONS.toggleWarningPopupWindow('Error: subtotal cannot be calculated');
 
       return false;
