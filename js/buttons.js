@@ -73,7 +73,7 @@ POS_BUTTONS.keypadButtons.forEach((keypadButton) => {
 POS_BUTTONS.subtotal.addEventListener('click', () => {
   const returnedValueOfCalculatedSubTotal = CURRENT_SALE.calculateSubtotal();
   if (returnedValueOfCalculatedSubTotal) {
-    UI_FUNCTIONS.calculateTotalSalePrice();
+    UI_FUNCTIONS.setTotalSalePrice(returnedValueOfCalculatedSubTotal);
 
     MAIN_POS.currentStatus = 'WAITING_FOR_PAYMENT';
   }

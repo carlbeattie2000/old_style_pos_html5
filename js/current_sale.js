@@ -66,7 +66,14 @@ const CURRENT_SALE = {
     }
 
     this.totalSalePrice += this.totalTaxPayable;
-    this.totalSalePrice -= this.totalSalePrice * (this.discount / 100);
+
+    UI_FUNCTIONS.addNewCustomTableRow('Tax', 1, this.totalTaxPayable);
+
+    if (this.discount > 0) {
+      this.totalSalePrice -= Math.floor(this.totalSalePrice * (this.discount / 100));
+
+      UI_FUNCTIONS.addNewCustomTableRow('Discount', 1, `${Math.floor(this.totalSalePrice * (this.discount / 100))}`);
+    }
 
     this.subtotalCalled = true;
 

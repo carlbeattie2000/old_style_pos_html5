@@ -120,6 +120,10 @@ const UI_FUNCTIONS = {
     this.totalDisplay.value = `$ ${this.renderClientCurrencyFormat(total)}`;
   },
 
+  setTotalSalePrice(price) {
+    this.totalDisplay.value = `$ ${this.renderClientCurrencyFormat(price)}`;
+  },
+
   clearProductsInSale() {
     const rowsToFilterThrough = [...this.saleItemsDisplay.childNodes];
 
