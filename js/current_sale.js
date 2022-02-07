@@ -1,3 +1,4 @@
+import { newFunctionSelected } from "./input_functions.js";
 import UI_FUNCTIONS from "./ui_functions.js";
 
 const CURRENT_SALE = {
@@ -70,7 +71,7 @@ const CURRENT_SALE = {
 
     this.totalSalePrice += this.calculateTaxOnProduct(this.totalSalePrice);
 
-    UI_FUNCTIONS.addNewCustomTableRow('Tax', 1, this.totalTaxPayable);
+    UI_FUNCTIONS.addNewCustomTableRow('000TAX000', 'Tax', 1, this.totalTaxPayable);
 
     if (this.discount > 0) {
       this.totalSalePrice -= Math.floor(this.totalSalePrice * (this.discount / 100));
@@ -79,6 +80,8 @@ const CURRENT_SALE = {
     }
 
     this.subtotalCalled = true;
+
+    newFunctionSelected('waiting_for_payment');
 
     return this.totalSalePrice;
   },

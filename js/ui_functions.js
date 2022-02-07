@@ -88,10 +88,10 @@ const UI_FUNCTIONS = {
     this.saleItemsDisplay.innerHTML += newElementToAdd;
   },
 
-  addNewCustomTableRow(title, qty, totalPrice) {
+  addNewCustomTableRow(barcode = '', title, qty, totalPrice) {
     const newElementToAdd = `
       <tr id="${title}">
-        <td></td>
+        <td id="${barcode}">${barcode}</td>
         <td>${title}</td>
         <td id="qty_${qty}">1</td>
         <td></td>
@@ -151,5 +151,7 @@ const UI_FUNCTIONS = {
     this.mainPOSBodySetFilter(filterType);
   },
 };
+
+UI_FUNCTIONS.totalDisplay.value = '';
 
 export default UI_FUNCTIONS;

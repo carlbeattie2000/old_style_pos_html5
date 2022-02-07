@@ -1,6 +1,6 @@
 import MAIN_POS from './main_pos.js';
 import UI_FUNCTIONS from './ui_functions.js';
-import { barcodeEntered, discountEntered, customItem } from './input_functions.js';
+import { barcodeEntered, discountEntered, customItem, customWeightItem } from './input_functions.js';
 
 function convertKeypadCurrencyInput(value) {
   return parseInt(value * 100, 10);
@@ -32,6 +32,9 @@ function functionSwitch() {
       break;
     case 'price':
       customItem(convertKeypadCurrencyInput(keypadInput));
+      break;
+    case 'weight':
+      customWeightItem(keypadInput);
       break;
     default:
       break;

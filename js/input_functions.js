@@ -3,6 +3,10 @@ import MAIN_POS from './main_pos.js';
 import CURRENT_SALE from './current_sale.js';
 import UI_FUNCTIONS from './ui_functions.js';
 
+function randomBarcode() {
+  return Math.floor(Math.random() * 100000);
+}
+
 function barcodeEntered(barcodeToCheck) {
   const searchThroughItems = MAIN_POS.POSItemList;
 
@@ -77,7 +81,18 @@ function voidEntered() {
 function customItem(price) {
   CURRENT_SALE.scanProduct({ price });
 
-  UI_FUNCTIONS.addNewCustomTableRow('NO_NAME', 1, price);
+  UI_FUNCTIONS.addNewCustomTableRow(randomBarcode(), 'NO_NAME', 1, price);
+
+  UI_FUNCTIONS.calculateTotalSalePrice(CURRENT_SALE.productsScanned);
+}
+
+function customWeightItem(weight) {
+  const costPerG = 56;
+  const totalCost = weight * costPerG;
+
+  CURRENT_SALE.scanProduct({ price: totalCost });
+
+  UI_FUNCTIONS.addNewCustomTableRow(randomBarcode(), `${weight} g`, 1, totalCost);
 
   UI_FUNCTIONS.calculateTotalSalePrice(CURRENT_SALE.productsScanned);
 }
@@ -101,4 +116,5 @@ export {
   newFunctionSelected,
   clientSideCurrencyRendering,
   customItem,
+  customWeightItem,
 };

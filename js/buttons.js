@@ -12,6 +12,7 @@ const POS_BUTTONS = {
   findItems: document.getElementById('find_button'),
   closeFindItems: document.getElementById('close_item_lookup'),
   noTax: document.getElementById('no_tax_button'),
+  weight: document.getElementById('weight_button'),
   voidSale: document.getElementById('void_button'),
   discountSale: document.getElementById('discount_percentage_button'),
   price: document.getElementById('price_button'),
@@ -46,6 +47,10 @@ POS_BUTTONS.closeFindItems.addEventListener('click', () => {
 POS_BUTTONS.noTax.addEventListener('click', () => {
   noTaxEntered();
 });
+
+POS_BUTTONS.weight.addEventListener('click', () => {
+  newFunctionSelected('weight');
+})
 
 POS_BUTTONS.voidSale.addEventListener('click', () => {
   voidEntered();
