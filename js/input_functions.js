@@ -67,6 +67,10 @@ function newFunctionSelected(functionName) {
   MAIN_POS.selectedFunctionChange(functionName);
 }
 
+function clientSideCurrencyRendering(amount) {
+  return amount / 100;
+}
+
 export {
   barcodeEntered,
   discountEntered,
@@ -74,4 +78,5 @@ export {
   subTotalEntered,
   voidEntered,
   newFunctionSelected,
+  clientSideCurrencyRendering
 };
