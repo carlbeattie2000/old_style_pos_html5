@@ -84,7 +84,7 @@ const UI_FUNCTIONS = {
       </tr>
     `;
 
-    this.saleItemsDisplay.innerHTML += newElementToAdd();
+    this.saleItemsDisplay.innerHTML += newElementToAdd;
   },
 
   toggleDisableAllMainButtons() {

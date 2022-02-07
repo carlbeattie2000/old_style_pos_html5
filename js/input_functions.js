@@ -5,19 +5,22 @@ import UI_FUNCTIONS from './ui_functions.js';
 
 function barcodeEntered(barcodeToCheck) {
   const searchThroughItems = MAIN_POS.POSItemList;
+
   let itemFound = false;
 
   searchThroughItems
     .forEach((product) => {
       if (product.barcode === barcodeToCheck) {
-        // function to add item to GUI
-
-        CURRENT_SALE.scanProduct(product);
+        if (CURRENT_SALE.scanProduct(product)) {
+          UI_FUNCTIONS.addNewSaleProduct(product);
+        }
 
         itemFound = true;
         // function to calc the total
         return true;
       }
+
+      return false;
     });
 
   if (!itemFound) {

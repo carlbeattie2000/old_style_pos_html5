@@ -21,7 +21,7 @@ const CURRENT_SALE = {
 
       this.productsScanned[this.productsScanned.indexOf(productToAdd)].qty += 1;
 
-      return;
+      return false;
     }
 
     this.calculateTaxOnProduct(productToAdd.price);
@@ -30,6 +30,8 @@ const CURRENT_SALE = {
     productToAdd.qty = 1;
 
     this.productsScanned.push(productToAdd);
+
+    return true;
   },
   addDiscount(percentageAmount) {
     if (this.productsScanned.length === 0 || percentageAmount > 100) {
