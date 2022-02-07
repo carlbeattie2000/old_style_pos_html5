@@ -29,7 +29,7 @@ const POS_BUTTONS = {
   giftCard: document.getElementById('gift_card_button'),
   voucher: document.getElementById('voucher_button'),
   card: document.getElementById('card_button'),
-  cash: document.getElementById('cash'),
+  cash: document.getElementById('cash_button'),
   warningPopupClose: document.getElementById('warning-popup-close'),
 };
 
@@ -114,6 +114,30 @@ POS_BUTTONS.enter.addEventListener('click', () => {
   functionSwitch();
 
   UI_FUNCTIONS.clearInputValueFullPurge();
+});
+
+POS_BUTTONS.check.addEventListener('click', () => {
+  console.log("testing");
+});
+
+POS_BUTTONS.coupon.addEventListener('click', () => {
+  console.log("testing");
+});
+
+POS_BUTTONS.giftCard.addEventListener('click', () => {
+  console.log("testing");
+});
+
+POS_BUTTONS.voucher.addEventListener('click', () => {
+  console.log("testing");
+});
+
+POS_BUTTONS.card.addEventListener('click', () => {
+  console.log("testing");
+});
+
+POS_BUTTONS.cash.addEventListener('click', () => {
+  console.log("testing");
 });
 
 POS_BUTTONS.warningPopupClose.addEventListener('click', () => {
