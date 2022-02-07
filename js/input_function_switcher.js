@@ -36,6 +36,11 @@ function functionSwitch() {
     case 'weight':
       customWeightItem(keypadInput);
       break;
+    case 'refund':
+      MAIN_POS.cashInRegister -= convertKeypadCurrencyInput(keypadInput);
+
+      UI_FUNCTIONS.toggleWarningPopupWindow(`$${keypadInput} has been refunded! \n cash in register $${UI_FUNCTIONS.renderClientCurrencyFormat(MAIN_POS.cashInRegister)}`);
+      break;
     default:
       break;
   }
